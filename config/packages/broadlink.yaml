@@ -1,0 +1,52 @@
+switch:
+  - platform: broadlink
+    friendly_name: broadlink
+    timeout: 15
+    host: RMMINI-d9-23-fa.lan
+    mac: '78:0F:77:D9:23:FA'
+    type: rm_mini
+    switches:
+      denon_volume:
+        friendly_name: "Denon volume"
+        command_on: "JgCIAAkZDDkLGAsXCxgLOgsXCxkKGAo7CjsKOwo7ChgLGAsABZ0OFwg9CBoJGggaCRoJPAg9CTwIGgkaCRoJGQk8CzoJAAWhChkJPAkaCRkKGQk8CBoKGQkZCjsKOw04CT0JGQoZCgAFoAoYCzoLGAsXCxkKGAo7CjsKOQ4XChgLGAoZCjoLOgsADQU="
+        command_off: "JgCIAAoYCjsLGAgaChkIGwk8CBoJGgo7CD0IPQk8CBoJGggABaIJGQo7CxgKGAkaCjsLGAk8CTwIGgoZCRkJGgg9CD0IAAWiCRkKOw0WCRoJGQoZCTwKGAoZCD0MOQg9CD0IGwkZCgAFoAoZCjsJGQoZCRkKOwkaCTwKOwkZCxgKGQkZCzoKOwoADQU="
+
+input_select:
+  broadlink_denon_input:
+    name: Denon Input
+    initial: TV
+    options:
+      - 'TV'
+      - 'Chromecast'
+#      - 'Tuner'
+
+automation:
+  - alias: Select Denon Input TV
+    trigger:
+      - platform: state
+        entity_id: input_select.broadlink_denon_input
+        to: 'TV'
+    action:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.listwa_salon_slot_1
+      - service: broadlink.send
+        data:
+          host: RMMINI-d9-23-fa.lan
+          packet:
+            - "JgCIAAgaCTwJGggaCRoJPAkZChkJPAkZChkJPAk8CRkKGQkABaAKGQk8CRoIGggbCRkJPAk8ChkJPAk8CRkLGAg9CTwJAAWgChkJPAkZChkKGQk8CRkKGQk8CRkKGQg9CTwJGQoZCQAFoAoZCD0JGQoZCBoJGgk8CTwJGgk8CTwJGQoZCD0JPAkADQU="
+
+  - alias: Select Denon Input Chromecast
+    trigger:
+      - platform: state
+        entity_id: input_select.broadlink_denon_input
+        to: 'Chromecast'
+    action:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.listwa_salon_slot_1
+      - service: broadlink.send
+        data:
+          host: RMMINI-d9-23-fa.lan
+          packet:
+            - "JgCIAAgbCTwJGQoZCRkKGQkZCTwJGgoYChkKOwk8ChgKGQgABaELGAo7CBsJGQkaCTwJPAoYCjsJPAo7ChkKGAo7CjsKAAWgCRkKOwoZChgJGgkZChkKOwgaCRoIGwg9CTwJGQoZCQAFoAkaCTwJGQoZCRkJPAo7ChkKOwk8CD0IGgoZCD0IPQkADQU="

@@ -1,0 +1,7 @@
+- alias: 'Tasmota update check'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '12:00:00'
+  action:
+    - service: script.tasmota_update_check

@@ -1,0 +1,12 @@
+sequence:
+  - service: yeelight.set_mode
+    data:
+      entity_id: light.lampa_korytarz_drzwi
+      mode: moonlight
+  - service: yeelight.set_mode
+    data:
+      entity_id: light.lampa_korytarz
+      mode: moonlight
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.moonlight_korytarz

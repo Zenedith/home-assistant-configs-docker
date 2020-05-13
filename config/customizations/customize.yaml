@@ -1,0 +1,219 @@
+light.lampa_kuchnia_1:
+  friendly_name: Lampa kuchnia 1
+light.lampa_kuchnia_2:
+  friendly_name: Lampa kuchnia 2
+light.lampa_kuchnia_3:
+  friendly_name: Lampa kuchnia 3
+light.ambient_obraz:
+  friendly_name: Ambient Obraz
+light.ambient_regal:
+  friendly_name: Ambient Regał
+light.bedside:
+  friendly_name: bedside
+light.yeelight_sypialnia:
+  friendly_name: Lampa Sypialnia
+light.swiatlo_sypialnia:
+  friendly_name: Lampa Sypialnia
+light.lampa_lazienka:
+  friendly_name: Lampa Łazienka
+  icon: mdi:toilet
+light.lampa_korytarz:
+  friendly_name: Lampa korytarz
+light.lampa_korytarz_ambilight:
+  friendly_name: Lampa korytarz ambilight
+sensor.korytarz_motion_illuminance:
+  friendly_name: Naświetlenie
+sensor.korytarz_motion_battery:
+  friendly_name: Ruch Korytarz bateria
+binary_sensor.korytarz_motion_occupancy:
+  friendly_name: Ruch
+sensor.korytarz_temp_temperature:
+  friendly_name: Korytarz
+sensor.korytarz_temp_humidity:
+  friendly_name: Korytarz
+sensor.korytarz_temp_pressure:
+  friendly_name: Korytarz
+sensor.kuchnia_temp_temperature:
+  friendly_name: Kuchnia
+sensor.kuchnia_temp_humidity:
+  friendly_name: Kuchnia
+sensor.kuchnia_temp_pressure:
+  friendly_name: Kuchnia
+binary_sensor.drzwi_wejsciowe_contact:
+  friendly_name: Drzwi
+sensor.drzwi_wejsciowe_contact_battery:
+  friendly_name: Drzwi wejściowe bateria
+binary_sensor.lazienka_motion_occupancy:
+  friendly_name: Ruch
+sensor.lazienka_motion_battery:
+  friendly_name: Ruch Łazienka bateria
+sensor.lazienka_motion_illuminance:
+  friendly_name: Naświetlenie
+sensor.janek_motion_illuminance:
+  friendly_name: Naświetlenie
+sensor.janek_motion_battery:
+  friendly_name: Naświetlenie u Janka bateria
+binary_sensor.janek_motion_occupancy:
+  friendly_name: Ruch
+binary_sensor.okno_janek_contact:
+  friendly_name: Okno
+sensor.okno_janek_contact_battery:
+  friendly_name: Okno u Janka bateria
+binary_sensor.okno_sypialnia_contact:
+  friendly_name: Okno
+sensor.okno_sypialnia_contact_battery:
+  friendly_name: Okno Sypialnia bateria
+binary_sensor.kuchnia_leak_water_leak:
+  friendly_name: Zalanie
+sensor.kuchnia_leak_battery:
+  friendly_name: Zalanie kuchnia bateria
+binary_sensor.lazienka_leak_water_leak:
+  friendly_name: Zalanie
+sensor.lazienka_leak_battery:
+  friendly_name: Zalanie łazienka bateria
+binary_sensor.drzwi_balkonowe_contact:
+  friendly_name: Drzwi
+sensor.drzwi_balkonowe_contact_battery:
+  friendly_name: Drzwi balkonowe bateria
+binary_sensor.sypialnia_motion_occupancy:
+  friendly_name: Ruch
+sensor.sypialnia_motion_battery:
+  friendly_name: Ruch w sypialni bateria
+sensor.sypialnia_motion_illuminance:
+  friendly_name: Naświetlenie
+binary_sensor.drzwi_lazienka_contact:
+  friendly_name: Drzwi
+sensor.drzwi_lazienka_contact_battery:
+  friendly_name: Drzwi łazienka bateria
+light.salon_1:
+  friendly_name: Salon 1
+light.salon_2:
+  friendly_name: Salon 2
+light.salon_3:
+  friendly_name: Salon 3
+light.salon_4:
+  friendly_name: Salon 4
+light.salon_5:
+  friendly_name: Salon 5
+light.lampa_korytarz_drzwi:
+  friendly_name: Lampa korytarz (drzwi)
+binary_sensor.drzwi_toaleta_contact:
+  friendly_name: Drzwi
+sensor.drzwi_toaleta_contact_battery:
+  friendly_name: Drzwi toaleta bateria
+sensor.okno_kuchnia_contact_battery:
+  friendly_name: Okno kuchnia bateria
+sensor.vacuum_cleaning_time:
+  icon: mdi:clock-outline
+sensor.vacuum_main_brush:
+  friendly_name: Main brush
+  icon: mdi:blender
+sensor.vacuum_side_brush:
+  friendly_name: Side brush
+  icon: mdi:blender
+sensor.vacuum_filter:
+  friendly_name: Hepa filter
+  icon: mdi:filter
+sensor.vacuum_cleaning_count:
+  icon: mdi:counter
+sensor.speedtest_ping:
+  friendly_name: Ping
+  icon: mdi:pulse
+sensor.asuswrt_download_speed:
+  friendly_name: Download
+  icon: mdi:arrow-down-bold
+sensor.asuswrt_upload_speed:
+  friendly_name: Upload
+  icon: mdi:arrow-up-bold
+sensor.asuswrt_download:
+  friendly_name: Download
+  icon: mdi:arrow-down-bold
+sensor.asuswrt_upload:
+  friendly_name: Upload
+  icon: mdi:arrow-up-bold
+sensor.transmission_down_speed:
+  friendly_name: Download
+  icon: mdi:arrow-down-bold
+sensor.transmission_up_speed:
+  friendly_name: Upload
+  icon: mdi:arrow-up-bold
+switch.denon_volume:
+  icon: mdi:speaker
+sensor.zamioculcas_zamiifolia_light_intensity:
+  friendly_name: lx
+sensor.zamioculcas_zamiifolia_temperature:
+  friendly_name: C
+sensor.zamioculcas_zamiifolia_conductivity:
+  friendly_name: cond
+sensor.zamioculcas_zamiifolia_moisture:
+  friendly_name: moisture
+sensor.sansevieria_trifasciata_light_intensity:
+  friendly_name: lx
+sensor.sansevieria_trifasciata_temperature:
+  friendly_name: C
+sensor.sansevieria_trifasciata_conductivity:
+  friendly_name: cond
+sensor.sansevieria_trifasciata_moisture:
+  friendly_name: moisture
+sensor.spathiphyllum_light_intensity:
+  friendly_name: lx
+sensor.spathiphyllum_temperature:
+  friendly_name: C
+sensor.spathiphyllum_conductivity:
+  friendly_name: cond
+sensor.spathiphyllum_moisture:
+  friendly_name: moisture
+sensor.yucca_elephantipes_light_intensity:
+  friendly_name: lx
+sensor.yucca_elephantipes_temperature:
+  friendly_name: C
+sensor.yucca_elephantipes_conductivity:
+  friendly_name: cond
+sensor.yucca_elephantipes_moisture:
+  friendly_name: moisture
+sensor.dracaena_marginata_light_intensity:
+  friendly_name: lx
+sensor.dracaena_marginata_temperature:
+  friendly_name: C
+sensor.dracaena_marginata_conductivity:
+  friendly_name: cond
+sensor.dracaena_marginata_moisture:
+  friendly_name: moisture
+sensor.mi_h_e72e017168dc:
+  friendly_name: rtv
+sensor.mi_t_e72e017168dc:
+  friendly_name: rtv
+media_player.chromecastaudio9772:
+  friendly_name: salon
+sensor.mi_m_c47c8d6a0192:
+  friendly_name: moisture
+sensor.mi_t_c47c8d6a0192:
+  friendly_name: C
+sensor.mi_c_c47c8d6a0192:
+  friendly_name: cond
+sensor.mi_l_c47c8d6a0192:
+  friendly_name: lx
+sensor.mi_m_c47c8d69fef0:
+  friendly_name: moisture
+sensor.mi_t_c47c8d69fef0:
+  friendly_name: C
+sensor.mi_c_c47c8d69fef0:
+  friendly_name: cond
+sensor.mi_l_c47c8d69fef0:
+  friendly_name: lx
+sensor.mi_m_c47c8d6b24c7:
+  friendly_name: moisture
+sensor.mi_t_c47c8d6b24c7:
+  friendly_name: C
+sensor.mi_c_c47c8d6b24c7:
+  friendly_name: cond
+sensor.mi_l_c47c8d6b24c7:
+  friendly_name: lx
+sensor.mi_m_c47c8d6b1ab3:
+  friendly_name: moisture
+sensor.mi_t_c47c8d6b1ab3:
+  friendly_name: C
+sensor.mi_c_c47c8d6b1ab3:
+  friendly_name: cond
+sensor.mi_l_c47c8d6b1ab3:
+  friendly_name: lx

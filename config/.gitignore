@@ -1,3 +1,5 @@
+*.iml
+*.gz
 log*.txt
 *.db
 .storage
@@ -7,8 +9,9 @@ secrets.yaml
 source.js
 /custom_components/xboxone/tokens.json
 
-/www/custom_ui/flower-card/data/data.js
-/www/custom_ui/flower-card/data/Images/
+/www/custom_ui/flower-card/data
+/www/custom_ui/flower-card/data
 /known_devices.yaml
 home-assistant.log
 
+ssh

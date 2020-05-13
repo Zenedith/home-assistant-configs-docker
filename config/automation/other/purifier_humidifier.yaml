@@ -1,0 +1,362 @@
+- alias: 'Salon Air purifier off by night'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '02:00:00'
+  condition:
+    - condition: state
+      entity_id: switch.listwa_salon_slot_3
+      state: 'on'
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.listwa_salon_slot_3
+
+- alias: 'Salon Air purifier on by morning'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '07:10:00'
+  condition:
+    - condition: state
+      entity_id: switch.listwa_salon_slot_3
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.listwa_salon_slot_3
+
+- alias: 'Sleep mode for Air purifier'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '23:00:00'
+  condition:
+    - condition: state
+      entity_id: fan.purifier
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: fan.set_speed
+      data:
+        entity_id: fan.purifier
+        speed: 'silent'
+
+#- alias: 'Sleep mode for humidifier'
+#  initial_state: 'on'
+#  trigger:
+#    platform: time
+#    at: '23:00:00'
+#  condition:
+#    - condition: state
+#      entity_id: fan.smartmi2
+#      state: 'on'
+#  action:
+#    - service: fan.set_speed
+#      data:
+#        entity_id: fan.smartmi2
+#        speed: 'silent'
+
+- alias: 'Auto mode for Air purifier'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '07:01:00'
+  condition:
+    - condition: state
+      entity_id: fan.purifier
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: fan.set_speed
+      data:
+        entity_id: fan.purifier
+        speed: 'auto'
+
+- alias: 'Auto mode for humidifier'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '07:01:00'
+  condition:
+    - condition: state
+      entity_id: fan.smartmi2
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: fan.set_speed
+      data:
+        entity_id: fan.smartmi2
+        speed: 'auto'
+
+- alias: 'Power off humidifier when no water'
+  initial_state: 'on'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.humidifier_depth
+      below: 15
+  condition:
+    - condition: state
+      entity_id: fan.smartmi2
+      state: 'on'
+  action:
+    - service: fan.turn_off
+      data:
+        entity_id: fan.smartmi2
+    - service: notify.mypushbullet
+      data_template:
+        title: 'Humidifier off, no water'
+        message: |
+          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+          Humidifier off, no water
+
+- alias: 'Power off humidifier when humidity above 60%'
+  initial_state: 'on'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.purifier_humidity
+      above: 60
+  condition:
+    - condition: state
+      entity_id: fan.smartmi2
+      state: 'on'
+  action:
+    - service: fan.turn_off
+      data:
+        entity_id: fan.smartmi2
+#    - service: notify.mypushbullet
+#      data_template:
+#        title: 'Humidifier off humidity > 60%'
+#        message: |
+#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+#          Humidifier off humidity > 60%
+
+- alias: 'Power on humidifier when humidity below 45%'
+  initial_state: 'on'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.purifier_humidity
+    below: 45
+  condition:
+    - condition: state
+      entity_id: fan.smartmi2
+      state: 'off'
+    - condition: numeric_state
+      entity_id: sensor.humidifier_depth
+      above: 10
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: fan.turn_on
+      data:
+        entity_id: fan.smartmi2
+#    - service: notify.mypushbullet
+#      data_template:
+#        title: 'Humidifier on humidity < 45%'
+#        message: |
+#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+#          Humidifier on humidity < 45 %
+
+- alias: 'Purifier sleep mode when aqi below 8'
+  initial_state: 'on'
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.purifier_aqi
+      below: 8
+  condition:
+    - condition: template
+      value_template: "{{ not is_state('sensor.purifier_mode', 'silent') }}"
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: fan.turn_on
+      data:
+        entity_id: fan.purifier
+    - service: fan.set_speed
+      data:
+        entity_id: fan.purifier
+        speed: 'silent'
+#    - service: notify.mypushbullet
+#      data_template:
+#        title: 'Purifier sleep mode aqi < 8'
+#        message: |
+#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+#          Purifier sleep mode aqi < 8
+
+- alias: 'Purifier full power when aqi above 15'
+  initial_state: 'on'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.purifier_aqi
+    above: 15
+  condition:
+    - condition: template
+      value_template: "{{ not is_state('sensor.purifier_mode', 'favorite') }}"
+    - condition: state
+      entity_id: input_boolean.sypialnia_chillout
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: fan.turn_on
+      data:
+        entity_id: fan.purifier
+    - service: fan.set_speed
+      data:
+        entity_id: fan.purifier
+        speed: 'Favorite'
+#    - service: notify.mypushbullet
+#      data_template:
+#        title: 'Purifier full power when aqi above 15'
+#        message: |
+#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+#          Purifier full power when aqi above 15
+
+- alias: 'Purifier and humidifier off when wietrzenie start'
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: group.wietrzenie
+    to: 'on'
+  condition:
+    - condition: state
+      entity_id: input_boolean.ogrzewanie
+      state: 'on'
+  action:
+    - service: fan.turn_off
+      data:
+        entity_id: fan.purifier, fan.smartmi2
+    - service: automation.turn_off
+      data:
+        entity_id: automation.purifier_full_power_when_aqi_above_15, automation.purifier_sleep_mode_when_aqi_below_8, automation.power_off_humidifier_when_humidity_above_60, automation.power_on_humidifier_when_humidity_below_45
+#    - service: notify.mypushbullet
+#      data_template:
+#        title: 'Purifier and humidifier automations off'
+#        message: |
+#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+#          Purifier and humidifier automations off
+
+- alias: 'Purifier on when wietrzenie end'
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: group.wietrzenie
+    to: 'off'
+  action:
+    - service: fan.turn_on
+      data:
+        entity_id: fan.purifier, fan.smartmi2
+    - service: automation.turn_on
+      data:
+        entity_id: automation.purifier_full_power_when_aqi_above_15, automation.purifier_sleep_mode_when_aqi_below_8, automation.power_off_humidifier_when_humidity_above_60, automation.power_on_humidifier_when_humidity_below_45
+#    - service: notify.mypushbullet
+#      data_template:
+#        title: 'Purifier automations on'
+#        message: |
+#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+#          Purifier automations on
+
+- alias: 'Air purifier mode change'
+  trigger:
+    entity_id: input_select.xiaomi_airpurifier_mode
+    platform: state
+  action:
+    service: fan.set_speed
+    data_template:
+      entity_id: fan.purifier
+      speed: '{{ states.input_select.xiaomi_airpurifier_mode.state }}'
+
+- alias: 'Air purifier mode changed'
+  trigger:
+    platform: state
+    entity_id: fan.purifier
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('fan.purifier', 'mode') | string) != (states('input_select.xiaomi_airpurifier_mode') | string) }}"
+  action:
+    service: input_select.select_option
+    entity_id: input_select.xiaomi_airpurifier_mode
+    data_template:
+      option: '{{ states.fan.purifier.attributes.mode }}'
+
+- alias: 'Air purifier favorite level change'
+  trigger:
+    entity_id: input_number.xiaomi_airpurifier_favorite_level
+    platform: state
+  action:
+    service: xiaomi_miio.fan_set_favorite_level
+    data_template:
+      entity_id: fan.purifier
+      level: '{{ states.input_number.xiaomi_airpurifier_favorite_level.state | int }}'
+
+- alias: 'Air purifier favorite level changed'
+  trigger:
+    platform: state
+    entity_id: fan.purifier
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('fan.purifier', 'favorite_level') | int) != (states('input_number.xiaomi_airpurifier_favorite_level') | int) }}"
+  action:
+    service: input_number.set_value
+    entity_id: input_number.xiaomi_airpurifier_favorite_level
+    data_template:
+      value: '{{ states.fan.purifier.attributes.favorite_level }}'
+
+- alias: 'Humidifier mode change'
+  trigger:
+    entity_id: input_select.xiaomi_humidifier_mode
+    platform: state
+  action:
+    service: fan.set_speed
+    data_template:
+      entity_id: fan.smartmi2
+      speed: '{{ states.input_select.xiaomi_humidifier_mode.state }}'
+
+- alias: 'Humidifier mode changed'
+  trigger:
+    platform: state
+    entity_id: fan.smartmi2
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('fan.smartmi2', 'mode') | string) != (states('input_select.xiaomi_humidifier_mode') | string) }}"
+  action:
+    service: input_select.select_option
+    entity_id: input_select.xiaomi_humidifier_mode
+    data_template:
+      option: '{{ states.fan.smartmi2.attributes.mode }}'
+
+
+- alias: 'Humidifier target humidity level change'
+  trigger:
+    entity_id: input_number.xiaomi_humidifier_target_humidity_level
+    platform: state
+  action:
+    service: xiaomi_miio.fan_set_target_humidity
+    data_template:
+      entity_id: fan.smartmi2
+      humidity: '{{ states.input_number.xiaomi_humidifier_target_humidity_level.state | int }}'
+
+- alias: 'Humidifier target humidity level changed'
+  trigger:
+    platform: state
+    entity_id: fan.smartmi2
+  condition:
+    - condition: template
+      value_template: "{{ (state_attr('fan.smartmi2', 'target_humidity') | int) != (states('input_number.xiaomi_humidifier_target_humidity_level') | int) }}"
+  action:
+    service: input_number.set_value
+    entity_id: input_number.xiaomi_humidifier_target_humidity_level
+    data_template:
+      value: '{{ states.fan.smartmi2.attributes.target_humidity }}'

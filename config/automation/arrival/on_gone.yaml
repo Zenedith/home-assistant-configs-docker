@@ -1,0 +1,20 @@
+- alias: 'Gone for 5 minutes'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.home_occupied
+      to: 'off'
+      for:
+        minutes: 5
+  condition:
+    - condition: time
+      after: '06:00:00'
+      before: '23:59:59'
+  action:
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.just_left
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.presence_status
+        option: 'Away'

@@ -1,0 +1,14 @@
+sequence:
+  - service: switch.turn_on
+    data:
+      entity_id: switch.zmietek
+  - delay: 00:15:00
+  - service: vacuum.start
+    data:
+      entity_id: vacuum.zmietekv2
+  - service: notify.mypushbullet
+    data_template:
+      title: 'Zmietek start'
+      message: |
+        {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+        Zmietek start z poziomem baterii {{ state_attr('vacuum.zmietekv2', 'battery_level') }} %.

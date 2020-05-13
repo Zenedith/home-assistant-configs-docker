@@ -1,0 +1,58 @@
+#- alias: 'Rolety pokoje open at 10'
+#  initial_state: 'on'
+#  trigger:
+#    platform: time
+#    at: '10:00:00'
+#  action:
+#    - service: cover.open_cover
+#      data:
+#        entity_id: cover.pokoj_janka
+##    - service: cover.open_cover
+##      data:
+##        entity_id: cover.sypialnia
+
+#- alias: 'Roleta w kuchni 60% o 17'
+#  initial_state: 'on'
+#  trigger:
+#    platform: time
+#    at: '17:00:00'
+#  condition:
+#    - condition: state
+#      entity_id: cover.kuchnia
+#      state: 'open'
+#  action:
+#    - service: mqtt.publish
+#      data_template:
+#        topic: 'shellies/shellyswitch-135303/roller/0/command/pos'
+#        retain: true
+#        payload: '60'
+
+- alias: 'Rolety close when temp high'
+  initial_state: 'on'
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.dark_sky_temperature
+    above: 28
+  condition:
+    - condition: state
+      entity_id: input_select.presence_status
+      state: 'Away'
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: cover.pokoj_janka
+          state: 'open'
+        - condition: state
+          entity_id: cover.sypialnia
+          state: 'open'
+        - condition: state
+          entity_id: cover.kuchnia
+          state: 'open'
+  action:
+    - service: script.rolety_close
+    - service: notify.mypushbullet
+      data_template:
+        title: 'Rolety close when temp high'
+        message: |
+          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+          Rolety close when temp high (above 28C)

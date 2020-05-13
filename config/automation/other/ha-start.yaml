@@ -1,0 +1,219 @@
+- alias: 'Power state on HA start up'
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: script.tasmota_update_check
+    - service: mqtt.publish
+      data:
+        topic: 'zigbee2mqtt/sonoff2/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/salon_regal/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'listwa/listwa1/cmnd/POWER1'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'listwa/listwa1/cmnd/POWER2'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'listwa/listwa1/cmnd/POWER3'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'listwa/listwa1/cmnd/POWER4'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'listwa/listwa1/cmnd/POWER5'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'basic/sonoff-rtv-jan/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'zigbee2mqtt/sonoff1/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'basic/sonoff-basic-3/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'zigbee2mqtt/sonoff4/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'zigbee2mqtt/sonoff5/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'zigbee2mqtt/powr2_1/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'zigbee2mqtt/powr2_2/cmnd/POWER'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan1/cmnd/POWER1'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan1/cmnd/POWER2'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan2/cmnd/POWER1'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan2/cmnd/POWER2'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan3/cmnd/POWER1'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan3/cmnd/POWER2'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan4/cmnd/POWER1'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'incan/incan4/cmnd/POWER2'
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shellyswitch-32B580/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shellyswitch-5B28DA/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shellyswitch-135303/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shellyswitch-55A0C8/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shelly1-25A3EB/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shelly_1/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/sonoff_lampa_salon/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/salon_regal/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shelly_4/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/shelly_5/online'
+        payload: 'true'
+    - service: mqtt.publish
+      data:
+        topic: 'shellies/command'
+        payload: 'update'
+
+- alias: 'Climate off when heat off and HA start up'
+  initial_state: 'on'
+  trigger:
+    platform: homeassistant
+    event: start
+  condition:
+    - condition: state
+      entity_id: input_boolean.ogrzewanie
+      state: 'off'
+  action:
+    - service: script.climate_off
+    - service: automation.turn_off
+      data:
+        entity_id:
+          - automation.przykrec_ogrzewanie_po_powrocie_przy_nadal_otwartych_drzwiach_w_salonie
+          - automation.przykrec_ogrzewanie_po_powrocie_przy_nadal_otwartym_oknie_w_pokoju_janka
+          - automation.przykrec_ogrzewanie_po_powrocie_przy_nadal_otwartym_oknie_w_sypialni
+          - automation.przykrec_ogrzewanie_przy_otwartych_drzwiach_w_salonie
+          - automation.przykrec_ogrzewanie_przy_otwartym_oknie_w_pokoju_janka
+          - automation.przykrec_ogrzewanie_przy_otwartym_oknie_w_sypialni
+          - automation.przywroc_ogrzewanie_przy_zamknietych_drzwiach_w_salonie
+          - automation.przywroc_ogrzewanie_przy_zamknietym_oknie_w_pokoju_janka
+          - automation.przywroc_ogrzewanie_przy_zamknietym_oknie_w_sypialni
+
+#- alias: 'Climate on when heat on and HA start up'
+#  initial_state: 'on'
+#  trigger:
+#    platform: homeassistant
+#    event: start
+#  condition:
+#    - condition: state
+#      entity_id: input_boolean.ogrzewanie
+#      state: 'on'
+#  action:
+#    - service: script.climate_turn_on
+#    - service: automation.turn_on
+#      data:
+#        entity_id:
+#          - automation.przykrec_ogrzewanie_po_powrocie_przy_nadal_otwartych_drzwiach_w_salonie
+#          - automation.przykrec_ogrzewanie_po_powrocie_przy_nadal_otwartym_oknie_w_pokoju_janka
+#          - automation.przykrec_ogrzewanie_po_powrocie_przy_nadal_otwartym_oknie_w_sypialni
+#          - automation.przykrec_ogrzewanie_przy_otwartych_drzwiach_w_salonie
+#          - automation.przykrec_ogrzewanie_przy_otwartym_oknie_w_pokoju_janka
+#          - automation.przykrec_ogrzewanie_przy_otwartym_oknie_w_sypialni
+#          - automation.przywroc_ogrzewanie_przy_zamknietych_drzwiach_w_salonie
+#          - automation.przywroc_ogrzewanie_przy_zamknietym_oknie_w_pokoju_janka
+#          - automation.przywroc_ogrzewanie_przy_zamknietym_oknie_w_sypialni
+
+- alias: 'Update notifications'
+  initial_state: 'on'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.updater
+    to: 'on'
+  action:
+    - service: notify.mypushbullet
+      data_template:
+        title: 'New Home Assistant Release'
+        message: |
+          {{now().strftime('%d.%m.%Y-%H:%M:%S')}}
+          New Home Assistant release is now available.
+
+- alias: 'Create a notification when there is updates pending in HACS'
+  trigger:
+    platform: state
+    entity_id: sensor.hacs
+  condition:
+    - condition: template
+      value_template: "{{ states(trigger.entity_id) != 'unknown'}}"
+    - condition: template
+      value_template: "{{ (states(trigger.entity_id) | float) != 0}}"
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: Updates pending in HACS
+      message: >-
+        {% for repo in state_attr(trigger.entity_id, 'repositories') %}
+          **{{ repo.display_name }}** _{{ repo["installed version"] }}_ -> _{{ repo["available version"] }}_
+        {% endfor %}

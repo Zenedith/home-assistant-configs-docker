@@ -1,0 +1,3 @@
+sequence:
+  - service: cover.close_cover
+    entity_id: cover.kuchnia, cover.sypialnia, cover.pokoj_janka

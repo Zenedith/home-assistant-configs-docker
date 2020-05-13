@@ -1,0 +1,17 @@
+- alias: 'dafang motion detected'
+  initial_state: 'on'
+  trigger:
+    payload: 'ON'
+    platform: mqtt
+    topic: camera/dafang/motion
+  condition:
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'off'
+  action:
+    service: notify.mypushbullet
+    data_template:
+      title: '!! Security kamera !!'
+      message: |
+        {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+        Wykryto ruch.
