@@ -1,0 +1,84 @@
+{
+   "cap_add" : null,
+   "cap_drop" : null,
+   "cmd" : "",
+   "cpu_priority" : 50,
+   "devices" : null,
+   "enable_publish_all_ports" : false,
+   "enable_restart_policy" : false,
+   "enabled" : false,
+   "env_variables" : [
+      {
+         "key" : "device",
+         "value" : ""
+      },
+      {
+         "key" : "PATH",
+         "value" : "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+      },
+      {
+         "key" : "LANG",
+         "value" : "C.UTF-8"
+      },
+      {
+         "key" : "S6_BEHAVIOUR_IF_STAGE2_FAILS",
+         "value" : "2"
+      },
+      {
+         "key" : "S6_CMD_WAIT_FOR_SERVICES",
+         "value" : "1"
+      },
+      {
+         "key" : "GPG_KEY",
+         "value" : "0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D"
+      },
+      {
+         "key" : "PYTHON_VERSION",
+         "value" : "3.7.7"
+      },
+      {
+         "key" : "PYTHON_PIP_VERSION",
+         "value" : "20.0.2"
+      },
+      {
+         "key" : "WHEELS_LINKS",
+         "value" : "https://wheels.home-assistant.io/alpine-3.11/amd64/"
+      },
+      {
+         "key" : "S6_SERVICES_GRACETIME",
+         "value" : "60000"
+      },
+      {
+         "key" : "TZ",
+         "value" : "Europe/Warsaw"
+      }
+   ],
+   "exporting" : false,
+   "id" : "12aa58df427d9c4fecece86b4b7ab605c71b20a889ec33dae629a6b5109cae10",
+   "image" : "homeassistant/home-assistant:latest",
+   "is_ddsm" : false,
+   "is_package" : false,
+   "links" : [],
+   "memory_limit" : 0,
+   "name" : "homeassistant0.109.6",
+   "network" : [
+      {
+         "driver" : "host",
+         "name" : "host"
+      }
+   ],
+   "network_mode" : "host",
+   "port_bindings" : [],
+   "privileged" : false,
+   "shortcut" : {
+      "enable_shortcut" : false
+   },
+   "use_host_network" : true,
+   "volume_bindings" : [
+      {
+         "host_volume_file" : "/docker/homeassistant/config",
+         "mount_point" : "/config",
+         "type" : "rw"
+      }
+   ]
+}

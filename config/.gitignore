@@ -15,3 +15,4 @@ source.js
 home-assistant.log
 
 ssh
+*.pyc
