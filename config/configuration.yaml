@@ -1,5 +1,7 @@
 homeassistant:
   customize: !include_dir_merge_named customizations
+  external_url: !secret base_url
+  internal_url: http://synology.lan:8123
 
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
