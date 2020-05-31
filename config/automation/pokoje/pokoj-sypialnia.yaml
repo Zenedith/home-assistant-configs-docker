@@ -18,6 +18,13 @@
     platform: time
     at: '07:05:00'
   condition:
+    - condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
     - condition: state
       entity_id: binary_sensor.home_occupied
       state: 'on'
