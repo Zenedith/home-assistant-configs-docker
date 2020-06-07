@@ -1,5 +1,6 @@
 homeassistant:
   customize: !include_dir_merge_named customizations
+  packages: !include_dir_named packages
   external_url: !secret base_url
   internal_url: http://synology.lan:8123
 
@@ -17,11 +18,6 @@ ffmpeg:
 frontend:
   javascript_version: latest
   themes: !include_dir_merge_named themes
-
-#http:
-#  base_url: !secret base_url
-#  ssl_certificate: !secret ssl_certificate_path
-#  ssl_key: !secret ssl_key_path
 
 tts:
   - platform: google_translate
@@ -47,7 +43,6 @@ light: !include_dir_merge_list lights
 media_player: !include_dir_merge_list media_player
 yeelight: !include yeelight/yeelight.yaml
 plant: !include plants/plants.yaml
-packages: !include_dir_named packages
 
 speedtestdotnet:
   server_id: 7202
@@ -79,15 +74,15 @@ notify:
     platform: pushbullet
     api_key: !secret pushbullet_api_key
 
-##climate:
-##  - platform: eq3btsmart
-##    devices:
-##      pokoj-janka:
-##        mac: '00:1A:22:0C:1A:F2'
-##      sypialnia:
-##        mac: '00:1A:22:0C:1A:EF'
-##      salon:
-##        mac: '00:1A:22:11:5D:B3'
+#climate:
+#  - platform: eq3btsmart
+#    devices:
+#      pokoj-janka:
+#        mac: '00:1A:22:0C:1A:F2'
+#      sypialnia:
+#        mac: '00:1A:22:0C:1A:EF'
+#      salon:
+#        mac: '00:1A:22:11:5D:B3'
 #
 asuswrt:
   host: router.lan
