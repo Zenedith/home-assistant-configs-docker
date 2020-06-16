@@ -9,7 +9,7 @@ sequence:
         - 'switch.listwa_salon_slot_4'
         - 'switch.rtv_jan'
         - 'switch.salon_regal'
-        #        - 'switch.xbox_power_switch'
+#        - 'switch.xbox_power_switch'
         - 'switch.listwa_sypialnia_switch'
   - service: light.turn_off
     data:
