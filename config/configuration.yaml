@@ -85,8 +85,10 @@ notify:
 #        mac: '00:1A:22:11:5D:B3'
 #
 asuswrt:
-  host: router.lan
+  host: 192.168.1.1
   username: !secret device_tracker_asus_username
+#  password: !secret device_tracker_asus_password
+  require_ip: false
   ssh_key: /config/ssh/ssh_asus_private_key
   interface: 'eth0'
   dnsmasq: '/var/lib/misc'
@@ -98,9 +100,9 @@ asuswrt:
 
 device_tracker:
   - platform: asuswrt
-    host: router.lan
+    host: 192.168.1.1
     username: !secret device_tracker_asus_username
     password: !secret device_tracker_asus_password
     interval_seconds: 60
     new_device_defaults:
-      track_new_devices: false
+      track_new_devices: true

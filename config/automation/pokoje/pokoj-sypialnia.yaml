@@ -12,26 +12,26 @@
       data:
         entity_id: switch.listwa_sypialnia_switch
 
-- alias: 'Listwa sypialnia on'
-  initial_state: 'on'
-  trigger:
-    platform: time
-    at: '07:05:00'
-  condition:
-    - condition: time
-      weekday:
-      - mon
-      - tue
-      - wed
-      - thu
-      - fri
-    - condition: state
-      entity_id: binary_sensor.home_occupied
-      state: 'on'
-  action:
-    - service: switch.turn_on
-      data:
-        entity_id: switch.listwa_sypialnia_switch
+#- alias: 'Listwa sypialnia on'
+#  initial_state: 'on'
+#  trigger:
+#    platform: time
+#    at: '07:05:00'
+#  condition:
+#    - condition: time
+#      weekday:
+#      - mon
+#      - tue
+#      - wed
+#      - thu
+#      - fri
+#    - condition: state
+#      entity_id: binary_sensor.home_occupied
+#      state: 'on'
+#  action:
+#    - service: switch.turn_on
+#      data:
+#        entity_id: switch.listwa_sypialnia_switch
 
 #- alias: 'Listwa sypialnia (weekend) on'
 #  initial_state: 'off'
