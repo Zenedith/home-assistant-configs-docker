@@ -44,14 +44,6 @@ media_player: !include_dir_merge_list media_player
 yeelight: !include yeelight/yeelight.yaml
 plant: !include plants/plants.yaml
 
-speedtestdotnet:
-  server_id: 7202
-  scan_interval:
-    minutes: 30
-  monitored_conditions:
-    - ping
-
-
 vacuum:
   - platform: xiaomi_miio
     host: roborock.lan
