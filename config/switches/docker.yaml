@@ -62,6 +62,27 @@
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
+  resource: http://127.0.0.1:8126/container/sonarr
+  name: sonarr
+  body_on: '{"state": "unpause"}'
+  body_off: '{"state": "pause"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+- platform: rest
+  resource: http://127.0.0.1:8126/container/transmission
+  name: transmission
+  body_on: '{"state": "unpause"}'
+  body_off: '{"state": "pause"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+- platform: rest
+  resource: http://127.0.0.1:8126/container/vpn
+  name: vpn
+  body_on: '{"state": "unpause"}'
+  body_off: '{"state": "pause"}'
+  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+
+- platform: rest
   resource: http://127.0.0.1:8126/container/youtube-dl
   name: youtube-dl
   body_on: '{"state": "unpause"}'

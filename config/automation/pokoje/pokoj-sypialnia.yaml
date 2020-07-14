@@ -12,26 +12,26 @@
       data:
         entity_id: switch.listwa_sypialnia_switch
 
-#- alias: 'Listwa sypialnia on'
-#  initial_state: 'on'
-#  trigger:
-#    platform: time
-#    at: '07:05:00'
-#  condition:
-#    - condition: time
-#      weekday:
-#      - mon
-#      - tue
-#      - wed
-#      - thu
-#      - fri
-#    - condition: state
-#      entity_id: binary_sensor.home_occupied
-#      state: 'on'
-#  action:
-#    - service: switch.turn_on
-#      data:
-#        entity_id: switch.listwa_sypialnia_switch
+- alias: 'Listwa sypialnia on'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '07:05:00'
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.listwa_sypialnia_switch
 
 #- alias: 'Listwa sypialnia (weekend) on'
 #  initial_state: 'off'
@@ -61,7 +61,7 @@
 #          Listwa on
 
 - alias: 'Włącz światło w sypialni gdy ruch'
-#  initial_state: 'on'
+  #  initial_state: 'on'
   trigger:
     - platform: state
       entity_id: binary_sensor.sypialnia_motion_occupancy
@@ -183,7 +183,7 @@
         speed: 'silent'
 
 - alias: 'Przykręć ogrzewanie przy otwartym oknie w sypialni'
-#  initial_state: 'on'
+  #  initial_state: 'on'
   trigger:
     platform: state
     entity_id: binary_sensor.okno_sypialnia_contact
@@ -206,7 +206,7 @@
 #          Ogrzewanie przykręcone w sypialni
 
 - alias: 'Przykręć ogrzewanie po powrocie przy nadal otwartym oknie w sypialni'
-#  initial_state: 'on'
+  #  initial_state: 'on'
   trigger:
     platform: state
     entity_id: climate.sypialnia
@@ -224,7 +224,7 @@
         entity_id: climate.sypialnia
 
 - alias: 'Przywróć ogrzewanie przy zamkniętym oknie w sypialni'
-#  initial_state: 'on'
+  #  initial_state: 'on'
   trigger:
     platform: state
     entity_id: binary_sensor.okno_sypialnia_contact
@@ -262,3 +262,30 @@
     - service: switch.turn_off
       data:
         entity_id: switch.listwa_sypialnia_switch
+
+- alias: 'Child light on'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '18:05:00'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.bedside_online
+      state: 'on'
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.bedside,light.lampa_biurko
+
+- alias: 'Child light off'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '08:00:00'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.bedside,light.lampa_biurko

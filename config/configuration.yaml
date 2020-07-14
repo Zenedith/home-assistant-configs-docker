@@ -14,6 +14,20 @@ system_health:
 logbook:
 python_script:
 ffmpeg:
+logger:
+  default: info
+  logs:
+    # log level for HA core
+#    homeassistant.core: fatal
+    # log level for MQTT integration
+    homeassistant.components: warning
+    homeassistant.components.python_script: warning
+    aiohttp: debug
+    homeassistant.components.asuswrt: debug
+    homeassistant.components.vacuum: critical
+    libav.tcp: critical
+    homeassistant.components.automation: warning
+    homeassistant.loader: warning
 
 frontend:
   javascript_version: latest
@@ -78,23 +92,24 @@ notify:
 #
 asuswrt:
   host: 192.168.1.1
+  port: 2225
   username: !secret device_tracker_asus_username
 #  password: !secret device_tracker_asus_password
-  require_ip: false
   ssh_key: /config/ssh/ssh_asus_private_key
   interface: 'eth0'
   dnsmasq: '/var/lib/misc'
   sensors:
+    - devices
     - upload
     - download
     - upload_speed
     - download_speed
 
-device_tracker:
-  - platform: asuswrt
-    host: 192.168.1.1
-    username: !secret device_tracker_asus_username
-    password: !secret device_tracker_asus_password
-    interval_seconds: 60
-    new_device_defaults:
-      track_new_devices: true
+#device_tracker:
+#  - platform: asuswrt
+#    host: 192.168.1.1
+#    username: !secret device_tracker_asus_username
+#    password: !secret device_tracker_asus_password
+#    interval_seconds: 60
+#    new_device_defaults:
+#      track_new_devices: true
