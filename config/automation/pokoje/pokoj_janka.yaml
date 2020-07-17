@@ -1,192 +1,113 @@
-- alias: 'Listwa sypialnia off'
+- alias: 'Jan RTV off'
   initial_state: 'on'
   trigger:
     platform: time
-    at: '01:05:00'
-  condition:
-    - condition: state
-      entity_id: binary_sensor.listwa_sypiania_used
-      state: 'off'
+    at: '00:05:00'
   action:
     - service: switch.turn_off
       data:
-        entity_id: switch.listwa_sypialnia_switch
+        entity_id: switch.listwa_jan_switch
 
-- alias: 'Listwa sypialnia on'
+- alias: 'Bedside Jan on'
   initial_state: 'on'
   trigger:
     platform: time
-    at: '07:05:00'
+    at: '18:05:00'
   condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
+    - condition: state
+      entity_id: light.bedside
+      state: 'off'
+    - condition: state
+      entity_id: binary_sensor.bedside_online
+      state: 'on'
     - condition: state
       entity_id: binary_sensor.home_occupied
       state: 'on'
   action:
-    - service: switch.turn_on
+    - service: light.turn_on
       data:
-        entity_id: switch.listwa_sypialnia_switch
+        entity_id: light.bedside
 
-#- alias: 'Listwa sypialnia (weekend) on'
-#  initial_state: 'off'
-#  trigger:
-#    platform: time
-#    at: '08:00:00'
-#  condition:
-#    - condition: time
-#      weekday:
-#      - sat
-#      - sun
-#    - condition: state
-#      entity_id: switch.listwa_sypialnia_switch
-#      state: 'off'
-#    - condition: state
-#      entity_id: binary_sensor.home_occupied
-#      state: 'on'
-#  action:
-#    - service: switch.turn_on
-#      data:
-#        entity_id: switch.listwa_sypialnia_switch
-#    - service: notify.mypushbullet
-#      data_template:
-#        title: 'Listwa sypialnia on'
-#        message: |
-#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
-#          Listwa on
+- alias: 'Bedside Jan off'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '10:00:00'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.bedside
 
-- alias: 'Włącz światło w sypialni gdy ruch'
-  #  initial_state: 'on'
+- alias: 'Włącz światło w pokoju Janka gdy ruch'
+  initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: binary_sensor.sypialnia_motion_occupancy
+      entity_id: binary_sensor.janek_motion_occupancy
       to: 'on'
   condition:
     - condition: sun
       after: sunset
       after_offset: '-01:00:00'
     - condition: state
-      entity_id: input_boolean.sypialnia_chillout
+      entity_id: input_boolean.jasiu_chillout
       state: 'off'
     - condition: state
-      entity_id: light.swiatlo_sypialnia
+      entity_id: light.swiatlo_pokoj_janka
       state: 'off'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.swiatlo_sypialnia
-    - service: light.turn_on
-      data:
-        entity_id: light.yeelight_sypialnia
+        entity_id: light.swiatlo_pokoj_janka
 
-- alias: 'Włącz timer w sypialni gdy ruch'
+- alias: 'Włącz timer w pokoju Janka gdy ruch'
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: binary_sensor.sypialnia_motion_occupancy
+      entity_id: binary_sensor.janek_motion_occupancy
       to: 'on'
   condition:
     - condition: sun
       after: sunset
       after_offset: '-01:00:00'
     - condition: state
-      entity_id: input_boolean.sypialnia_chillout
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.sypialnia_korki
+      entity_id: input_boolean.jasiu_chillout
       state: 'off'
   action:
     - service: timer.cancel
       data:
-        entity_id: timer.sypialnia
+        entity_id: timer.pokoj_janka
     - service: timer.start
       data:
-        entity_id: timer.sypialnia
+        entity_id: timer.pokoj_janka
 
-- alias: 'Wyłącz światło w sypialni po upływie czasu'
+- alias: 'Wyłącz światło w pokoju Janka po upływie czasu'
   initial_state: 'on'
   trigger:
     platform: event
     event_type: timer.finished
     event_data:
-      entity_id: timer.sypialnia
-  condition:
-    - condition: state
-      entity_id: input_boolean.sypialnia_chillout
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.sypialnia_korki
-      state: 'off'
+      entity_id: timer.pokoj_janka
   action:
     - service: light.turn_off
       data:
-        entity_id: light.swiatlo_sypialnia
+        entity_id: light.swiatlo_pokoj_janka
 
-- alias: 'Wyzeruj timer w sypialni gdy światło zgaszone'
+- alias: 'Wyzeruj timer w pokoju Janka gdy światło zgaszone'
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: light.yeelight_sypialnia
-      to: 'off'
-    - platform: state
-      entity_id: light.swiatlo_sypialnia
+      entity_id: light.swiatlo_pokoj_janka
       to: 'off'
   action:
     - service: timer.cancel
       data:
-        entity_id: timer.sypialnia
+        entity_id: timer.pokoj_janka
 
-- alias: 'Korki mode on'
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: input_boolean.sypialnia_korki
-      to: 'on'
-  action:
-    - service: light.turn_on
-      entity_id: light.swiatlo_sypialnia
-    - service: light.turn_on
-      entity_id: light.yeelight_sypialnia
-      data_template:
-        brightness: 254
-    - service: yeelight.set_mode
-      data:
-        entity_id: light.yeelight_sypialnia
-        mode: normal
-
-- alias: 'Zgaś światło w sypialni gdy chillout mode on'
-  initial_state: 'on'
-  trigger:
-    - platform: state
-      entity_id: input_boolean.sypialnia_chillout
-      to: 'on'
-  condition:
-    - condition: state
-      entity_id: light.swiatlo_sypialnia
-      state: 'on'
-  action:
-    - service: light.turn_off
-      data:
-        entity_id: light.swiatlo_sypialnia
-    - service: fan.set_speed
-      data:
-        entity_id: fan.purifier
-        speed: 'silent'
-    - service: fan.set_speed
-      data:
-        entity_id: fan.smartmi2
-        speed: 'silent'
-
-- alias: 'Przykręć ogrzewanie przy otwartym oknie w sypialni'
+- alias: 'Przykręć ogrzewanie przy otwartym oknie w pokoju Janka'
   #  initial_state: 'on'
   trigger:
     platform: state
-    entity_id: binary_sensor.okno_sypialnia_contact
+    entity_id: binary_sensor.okno_janek_contact
     to: 'on'
     for:
       seconds: 15
@@ -197,23 +118,23 @@
   action:
     - service: climate.turn_off
       data:
-        entity_id: climate.sypialnia
+        entity_id: climate.pokoj_janka
 #    - service: notify.mypushbullet
 #      data_template:
-#        title: 'Ogrzewanie przykręcone w sypialni'
+#        title: 'Ogrzewanie przykręcone w pokóju Janka'
 #        message: |
 #          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
-#          Ogrzewanie przykręcone w sypialni
+#          Ogrzewanie przykręcone w pokóju Janka
 
-- alias: 'Przykręć ogrzewanie po powrocie przy nadal otwartym oknie w sypialni'
+- alias: 'Przykręć ogrzewanie po powrocie przy nadal otwartym oknie w pokoju Janka'
   #  initial_state: 'on'
   trigger:
     platform: state
-    entity_id: climate.sypialnia
+    entity_id: climate.pokoj_janka
     to: 'heat'
   condition:
     - condition: state
-      entity_id: binary_sensor.okno_sypialnia_contact
+      entity_id: binary_sensor.okno_janek_contact
       state: 'on'
     - condition: state
       entity_id: input_boolean.ogrzewanie
@@ -221,13 +142,13 @@
   action:
     - service: climate.turn_off
       data:
-        entity_id: climate.sypialnia
+        entity_id: climate.pokoj_janka
 
-- alias: 'Przywróć ogrzewanie przy zamkniętym oknie w sypialni'
+- alias: 'Przywróć ogrzewanie przy zamkniętym oknie w pokoju Janka'
   #  initial_state: 'on'
   trigger:
     platform: state
-    entity_id: binary_sensor.okno_sypialnia_contact
+    entity_id: binary_sensor.okno_janek_contact
     to: 'off'
   condition:
     - condition: state
@@ -236,7 +157,7 @@
   action:
     - service: climate.turn_on
       data:
-        entity_id: climate.sypialnia
+        entity_id: climate.pokoj_janka
     - delay: 00:00:10
     - service: climate.set_hvac_mode
       data:
@@ -244,49 +165,22 @@
         hvac_mode: auto
 #    - service: notify.mypushbullet
 #      data_template:
-#        title: 'Ogrzewanie przywrócone w sypialni'
+#        title: 'Ogrzewanie przywrócone w pokóju Janka'
 #        message: |
 #          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
-#          Ogrzewanie przywrócone w sypialni
+#          Ogrzewanie przywrócone w pokóju Janka
 
-- alias: 'Turn off media (listwa) if switch is available'
+- alias: 'Zgaś światło w pokoju Janka gdy chillout mode on'
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: switch.listwa_sypialnia_switch
-      from: 'unavailable'
+      entity_id: input_boolean.jasiu_chillout
       to: 'on'
-      for:
-        minutes: 15
-  action:
-    - service: switch.turn_off
-      data:
-        entity_id: switch.listwa_sypialnia_switch
-
-- alias: 'Child light on'
-  initial_state: 'on'
-  trigger:
-    platform: time
-    at: '18:05:00'
   condition:
-
     - condition: state
-      entity_id: binary_sensor.bedside_online
+      entity_id: light.swiatlo_pokoj_janka
       state: 'on'
-    - condition: state
-      entity_id: binary_sensor.home_occupied
-      state: 'on'
-  action:
-    - service: light.turn_on
-      data:
-        entity_id: light.bedside,light.lampa_biurko
-
-- alias: 'Child light off'
-  initial_state: 'on'
-  trigger:
-    platform: time
-    at: '08:00:00'
   action:
     - service: light.turn_off
       data:
-        entity_id: light.bedside,light.lampa_biurko
+        entity_id: light.swiatlo_pokoj_janka
