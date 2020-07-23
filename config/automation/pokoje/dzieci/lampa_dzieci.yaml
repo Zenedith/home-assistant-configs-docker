@@ -1,0 +1,26 @@
+- alias: 'Włącz światło u dzieci'
+  initial_state: 'on'
+  description: 'Włącz światło u dzieci na określony czas gdy ruch'
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.janek_motion_occupancy
+  condition:
+    - condition: sun
+      after: sunset
+      after_offset: '-02:00:00'
+    - condition: time
+      after: '19:00:00'
+      before: '21:29:59'
+    - condition: state
+      entity_id: input_boolean.jasiu_chillout
+      state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.swiatlo_pokoj_janka
+    - delay:
+        minutes: 15
+    - service: light.turn_off
+      data:
+        entity_id: light.swiatlo_pokoj_janka

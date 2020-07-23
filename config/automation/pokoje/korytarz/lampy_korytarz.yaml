@@ -1,0 +1,43 @@
+- alias: 'Włącz światło w korytarzu'
+  description: 'Włącz światło w korytarzu na określony czas gdy ruch lub otwarcie drzwi'
+  initial_state: 'on'
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.korytarz_motion_occupancy
+        - binary_sensor.drzwi_wejsciowe_contact
+  action:
+    - choose:
+      - conditions:
+        - condition: state
+          entity_id: binary_sensor.home_occupied
+          state: 'off'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: group.korytarz_lampy
+          - delay:
+              minutes: 2
+          - service: light.turn_off
+            data:
+              entity_id: group.korytarz_lampy
+          - service: notify.mypushbullet
+            data_template:
+              title: 'Ruch w korytarzu'
+              message: |
+                {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+                Ruch w korytarzu.
+      - conditions:
+        - condition: time
+          after: '07:00:00'
+          before: '20:59:59'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: group.korytarz_lampy
+          - delay:
+              minutes: 2
+          - service: light.turn_off
+            data:
+              entity_id: group.korytarz_lampy

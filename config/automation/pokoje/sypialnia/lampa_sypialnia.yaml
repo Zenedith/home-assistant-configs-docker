@@ -1,0 +1,27 @@
+- alias: 'Włącz światło w sypialni'
+  initial_state: 'off'
+  description: 'Włącz światło w sypialni na określony czas gdy ruch'
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.sypialnia_motion_occupancy
+  condition:
+    - condition: sun
+      after: sunset
+      after_offset: '-02:00:00'
+    - condition: state
+      entity_id: input_boolean.sypialnia_chillout
+      state: 'off'
+    - condition: state
+      entity_id: input_boolean.sypialnia_korki
+      state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.swiatlo_sypialnia
+    - delay:
+        minutes: 10
+    - service: light.turn_off
+      data:
+        entity_id: light.swiatlo_sypialnia
+
