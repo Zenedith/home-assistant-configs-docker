@@ -1,0 +1,68 @@
+- alias: 'Zmietek start'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '11:00:00'
+  condition:
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'off'
+    - condition: time
+      weekday:
+        - mon
+        - wed
+        - fri
+  action:
+    - service: script.zmietek_start
+
+- alias: 'Zmietek docked'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: vacuum.zmietekv2
+      from: 'returning'
+      to: 'docked'
+  action:
+    - service: notify.mypushbullet
+      data_template:
+        title: 'Zmietek zakończył sprzątanie'
+        message: |
+          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+          Zmietek zakończył sprzątanie po {{ state_attr('vacuum.zmietekv2', 'cleaning_time') }} minutach, powierchnię {{ state_attr('vacuum.zmietekv2', 'cleaned_area') }} m2 z poziomem baterii {{ state_attr('vacuum.zmietekv2', 'battery_level') }} %.
+
+- alias: 'Zmietek error'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: vacuum.zmietekv2
+      to: 'error'
+  action:
+    - service: notify.mypushbullet
+      data_template:
+        title: 'Zmietek napotkał problem'
+        message: |
+          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+          Zmietek po {{ state_attr('vacuum.zmietekv2', 'cleaning_time') }} minutach sprzątania {{ state_attr('vacuum.zmietekv2', 'cleaned_area') }} m2 zatrzymał się z powodu błędu.
+          {{ state_attr('vacuum.zmietekv2', 'error') }}
+
+- alias: 'Włącz ładowanie zmietka po sprzątaniu'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: sensor.vacuum_status
+      to: 'Returning home'
+  action:
+    - service: switch.turn_on
+      data:
+        entity_id: switch.zmietek
+
+- alias: 'Wyłącz ładowanie zmietka przy 90% baterii'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: sensor.vacuum_battery
+      to: '90'
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.zmietek

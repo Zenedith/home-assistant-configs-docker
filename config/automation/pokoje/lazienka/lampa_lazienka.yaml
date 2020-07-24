@@ -1,0 +1,51 @@
+#- alias: 'Włącz światło w łazience gdy otwarte drzwi lub ruch'
+#  initial_state: 'on'
+#  trigger:
+#    - platform: state
+#      entity_id: binary_sensor.drzwi_lazienka_contact,binary_sensor.lazienka_motion_occupancy
+#      to: 'on'
+#  condition:
+#    - condition: state
+#      entity_id: light.lampa_lazienka
+#      state: 'off'
+#  action:
+#    - service: light.turn_on
+#      data:
+#        entity_id: light.lampa_lazienka
+#
+#- alias: 'Włącz timer w łazience gdy otwarte drzwi lub ruch'
+#  initial_state: 'on'
+#  trigger:
+#    - platform: state
+#      entity_id: binary_sensor.drzwi_lazienka_contact,binary_sensor.lazienka_motion_occupancy
+#      to: 'on'
+#  action:
+#    - service: timer.cancel
+#      data:
+#        entity_id: timer.lazienka
+#    - service: timer.start
+#      data:
+#        entity_id: timer.lazienka
+#
+#- alias: 'Wyłącz światło w łazience po upływie czasu'
+#  initial_state: 'on'
+#  trigger:
+#    platform: event
+#    event_type: timer.finished
+#    event_data:
+#      entity_id: timer.lazienka
+#  action:
+#    - service: light.turn_off
+#      data:
+#        entity_id: light.lampa_lazienka
+#
+#- alias: 'Wyzeruj timer w łazience gdy światło zgaszone'
+#  initial_state: 'on'
+#  trigger:
+#    - platform: state
+#      entity_id: light.lampa_lazienka
+#      to: 'off'
+#  action:
+#    - service: timer.cancel
+#      data:
+#        entity_id: timer.lazienka

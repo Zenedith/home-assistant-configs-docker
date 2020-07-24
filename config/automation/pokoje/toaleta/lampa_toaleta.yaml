@@ -1,0 +1,33 @@
+- alias: 'Światło w toalecie'
+  description: 'Światło w toalecie'
+  initial_state: 'on'
+  mode: restart
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.drzwi_toaleta_contact
+      to: 'on'
+  action:
+    - choose:
+      - conditions:
+          - condition: state
+            entity_id: light.swiatlo_toaleta
+            state: 'off'
+        sequence:
+          - service: light.turn_on
+            data:
+              entity_id: light.swiatlo_toaleta
+          - delay:
+              minutes: 15
+          - service: light.turn_off
+            data:
+              entity_id: light.swiatlo_toaleta
+      - conditions:
+          - condition: state
+            entity_id: light.swiatlo_toaleta
+            state: 'on'
+        sequence:
+          - delay:
+              seconds: 1
+          - service: light.turn_off
+            data:
+              entity_id: light.swiatlo_toaleta

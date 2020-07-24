@@ -5,6 +5,7 @@
   trigger:
     - platform: state
       entity_id: binary_sensor.sypialnia_motion_occupancy
+      to: 'on'
   condition:
     - condition: sun
       after: sunset
@@ -25,3 +26,43 @@
       data:
         entity_id: light.swiatlo_sypialnia
 
+- alias: 'Zgaś światło w sypialni gdy chillout mode on'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.sypialnia_chillout
+      to: 'on'
+  condition:
+    - condition: state
+      entity_id: light.swiatlo_sypialnia
+      state: 'on'
+  action:
+    - service: light.turn_off
+      data:
+        entity_id: light.swiatlo_sypialnia
+    - service: fan.set_speed
+      data:
+        entity_id: fan.purifier
+        speed: 'silent'
+    - service: fan.set_speed
+      data:
+        entity_id: fan.smartmi2
+        speed: 'silent'
+
+- alias: 'Korki mode on'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: input_boolean.sypialnia_korki
+      to: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.swiatlo_sypialnia
+    - service: light.turn_on
+      entity_id: light.yeelight_sypialnia
+      data_template:
+        brightness: 254
+    - service: yeelight.set_mode
+      data:
+        entity_id: light.yeelight_sypialnia
+        mode: normal

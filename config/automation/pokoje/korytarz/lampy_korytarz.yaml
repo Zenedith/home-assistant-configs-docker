@@ -7,6 +7,7 @@
       entity_id:
         - binary_sensor.korytarz_motion_occupancy
         - binary_sensor.drzwi_wejsciowe_contact
+      to: 'on'
   action:
     - choose:
       - conditions:

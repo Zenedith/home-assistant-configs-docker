@@ -1,0 +1,66 @@
+#- alias: 'Przykręć ogrzewanie przy otwartym oknie w sypialni'
+#  #  initial_state: 'on'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.okno_sypialnia_contact
+#    to: 'on'
+#    for:
+#      seconds: 15
+#  condition:
+#    - condition: state
+#      entity_id: input_boolean.ogrzewanie
+#      state: 'on'
+#  action:
+#    - service: climate.turn_off
+#      data:
+#        entity_id: climate.sypialnia
+##    - service: notify.mypushbullet
+##      data_template:
+##        title: 'Ogrzewanie przykręcone w sypialni'
+##        message: |
+##          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+##          Ogrzewanie przykręcone w sypialni
+#
+#- alias: 'Przykręć ogrzewanie po powrocie przy nadal otwartym oknie w sypialni'
+#  #  initial_state: 'on'
+#  trigger:
+#    platform: state
+#    entity_id: climate.sypialnia
+#    to: 'heat'
+#  condition:
+#    - condition: state
+#      entity_id: binary_sensor.okno_sypialnia_contact
+#      state: 'on'
+#    - condition: state
+#      entity_id: input_boolean.ogrzewanie
+#      state: 'on'
+#  action:
+#    - service: climate.turn_off
+#      data:
+#        entity_id: climate.sypialnia
+#
+#- alias: 'Przywróć ogrzewanie przy zamkniętym oknie w sypialni'
+#  #  initial_state: 'on'
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.okno_sypialnia_contact
+#    to: 'off'
+#  condition:
+#    - condition: state
+#      entity_id: input_boolean.ogrzewanie
+#      state: 'on'
+#  action:
+#    - service: climate.turn_on
+#      data:
+#        entity_id: climate.sypialnia
+#    - delay: 00:00:10
+#    - service: climate.set_hvac_mode
+#      data:
+#        entity_id: climate.sypialnia
+#        hvac_mode: auto
+##    - service: notify.mypushbullet
+##      data_template:
+##        title: 'Ogrzewanie przywrócone w sypialni'
+##        message: |
+##          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+##          Ogrzewanie przywrócone w sypialni
