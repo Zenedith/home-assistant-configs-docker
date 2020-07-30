@@ -1,0 +1,89 @@
+- platform: mqtt
+  name: "jan temp temperature"
+  state_topic: "blemqtt/a4c138a37035"
+  unit_of_measurement: '°C'
+  device_class: "temperature"
+  value_template: "{{ value_json.temperature }}"
+
+- platform: mqtt
+  name: "jan temp humidity"
+  state_topic: "blemqtt/a4c138a37035"
+  device_class: "humidity"
+  unit_of_measurement: '%'
+  value_template: "{{ value_json.humidity }}"
+
+- platform: mqtt
+  name: "jan temp battery"
+  state_topic: "blemqtt/a4c138a37035"
+  device_class: "battery"
+  unit_of_measurement: '%'
+  value_template: "{{ value_json.batt }}"
+
+- platform: mqtt
+  name: "salon temp temperature"
+  state_topic: "home/ble2mqtt/e7:2e:01:71:68:dc/temperature"
+  unit_of_measurement: '°C'
+  device_class: "temperature"
+
+#- platform: mqtt
+#  name: "salon temp humidity"
+#  state_topic: "home/ble2mqtt/e7:2e:01:71:68:dc/humidity"
+#  unit_of_measurement: '%'
+#  device_class: "humidity"
+
+- platform: mqtt
+  name: "zamioculcas zamiifolia moisture"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6a:01:92/moisture"
+  device_class: "humidity"
+  unit_of_measurement: '%'
+
+- platform: mqtt
+  name: "zamioculcas zamiifolia temperature"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6a:01:92/temperature"
+  unit_of_measurement: '°C'
+  device_class: "temperature"
+
+- platform: mqtt
+  name: "zamioculcas zamiifolia conductivity"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6a:01:92/fertility"
+#  device_class: "conductivity"
+  unit_of_measurement: 'µS/cm'
+  device_class: temperature
+
+- platform: mqtt
+  name: "spathiphyllum moisture"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6b:24:c7/moisture"
+  device_class: "humidity"
+  unit_of_measurement: '%'
+
+- platform: mqtt
+  name: "spathiphyllum temperature"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6b:24:c7/temperature"
+  unit_of_measurement: '°C'
+  device_class: "temperature"
+
+- platform: mqtt
+  name: "spathiphyllum conductivity"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6b:24:c7/fertility"
+#  device_class: "conductivity"
+  unit_of_measurement: 'µS/cm'
+  device_class: temperature
+
+- platform: mqtt
+  name: "pachira moisture"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/moisture"
+  device_class: "humidity"
+  unit_of_measurement: '%'
+
+- platform: mqtt
+  name: "pachira temperature"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/temperature"
+  unit_of_measurement: '°C'
+  device_class: "temperature"
+
+- platform: mqtt
+  name: "pachira conductivity"
+  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/fertility"
+#  device_class: "conductivity"
+  unit_of_measurement: 'µS/cm'
+  device_class: temperature

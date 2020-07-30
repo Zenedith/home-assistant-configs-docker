@@ -1,0 +1,4 @@
+#- platform: xbox_live
+#  api_key: !secret xapi_api_key
+#  xuid:
+#    - !secret xapi_xuid

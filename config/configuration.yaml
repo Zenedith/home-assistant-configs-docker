@@ -22,8 +22,8 @@ logger:
     # log level for MQTT integration
     homeassistant.components: warning
     homeassistant.components.python_script: warning
-    aiohttp: debug
-    homeassistant.components.asuswrt: debug
+#    aiohttp: debug
+#    homeassistant.components.asuswrt: debug
     homeassistant.components.vacuum: critical
     libav.tcp: critical
     homeassistant.components.automation: warning
