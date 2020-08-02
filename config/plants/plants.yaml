@@ -1,12 +1,12 @@
 zamioculcas_zamiifolia:
   sensors:
-#    moisture: sensor.mi_m_c47c8d6a0192
-    moisture: sensor.zamioculcas_zamiifolia_moisture
+    moisture: sensor.mi_m_c47c8d6a0192
+#    moisture: sensor.zamioculcas_zamiifolia_moisture
     battery: sensor.zamioculcas_zamiifolia_battery
-#    temperature: sensor.mi_t_c47c8d6a0192
-    temperature: sensor.zamioculcas_zamiifolia_temperature
-#    conductivity: sensor.mi_c_c47c8d6a0192
-    conductivity: sensor.zamioculcas_zamiifolia_conductivity
+    temperature: sensor.mi_t_c47c8d6a0192
+#    temperature: sensor.zamioculcas_zamiifolia_temperature
+    conductivity: sensor.mi_c_c47c8d6a0192
+#    conductivity: sensor.zamioculcas_zamiifolia_conductivity
     brightness: sensor.mi_l_c47c8d6a0192
   min_moisture: 15
   max_moisture: 60
@@ -93,13 +93,13 @@ zamioculcas_zamiifolia:
 
 spathiphyllum:
   sensors:
-#    moisture: sensor.mi_m_c47c8d6b24c7
-    moisture: sensor.spathiphyllum_moisture
+    moisture: sensor.mi_m_c47c8d6b24c7
+#    moisture: sensor.spathiphyllum_moisture
     battery: sensor.spathiphyllum_battery
-#    temperature: sensor.mi_t_c47c8d6b24c7
-    temperature: sensor.spathiphyllum_temperature
-#    conductivity: sensor.mi_c_c47c8d6b24c7
-    conductivity: sensor.spathiphyllum_conductivity
+    temperature: sensor.mi_t_c47c8d6b24c7
+#    temperature: sensor.spathiphyllum_temperature
+    conductivity: sensor.mi_c_c47c8d6b24c7
+#    conductivity: sensor.spathiphyllum_conductivity
     brightness: sensor.mi_l_c47c8d6b24c7
   min_moisture: 15
   max_moisture: 65
@@ -111,13 +111,13 @@ spathiphyllum:
 
 pachira:
   sensors:
-#    moisture: sensor.mi_m_c47c8d6b5ab1
-    moisture: sensor.pachira_moisture
+    moisture: sensor.mi_m_c47c8d6b5ab1
+#    moisture: sensor.pachira_moisture
     battery: sensor.pachira_battery
-#    temperature: sensor.mi_t_cc47c8d6b5ab1
-    temperature: sensor.pachira_temperature
-#    conductivity: sensor.mi_c_cc47c8d6b5ab1
-    conductivity: sensor.pachira_conductivity
+    temperature: sensor.mi_t_cc47c8d6b5ab1
+#    temperature: sensor.pachira_temperature
+    conductivity: sensor.mi_c_cc47c8d6b5ab1
+#    conductivity: sensor.pachira_conductivity
     brightness: sensor.mi_l_cc47c8d6b5ab1
   min_moisture: 15
   max_moisture: 60
