@@ -25,11 +25,11 @@ automation:
       - service: switch.turn_on
         data:
           entity_id: switch.listwa_salon_slot_1
-      - service: broadlink.send
+      - service: remote.send_command
+        entity_id: remote.broadlink_remote
         data:
-          host: RMMINI-d9-23-fa.lan
-          packet:
-            - "JgCIAAgaCTwJGggaCRoJPAkZChkJPAkZChkJPAk8CRkKGQkABaAKGQk8CRoIGggbCRkJPAk8ChkJPAk8CRkLGAg9CTwJAAWgChkJPAkZChkKGQk8CRkKGQk8CRkKGQg9CTwJGQoZCQAFoAoZCD0JGQoZCBoJGgk8CTwJGgk8CTwJGQoZCD0JPAkADQU="
+          device: broadlink
+          command: b64:JgCIAAgaCTwJGggaCRoJPAkZChkJPAkZChkJPAk8CRkKGQkABaAKGQk8CRoIGggbCRkJPAk8ChkJPAk8CRkLGAg9CTwJAAWgChkJPAkZChkKGQk8CRkKGQk8CRkKGQg9CTwJGQoZCQAFoAoZCD0JGQoZCBoJGgk8CTwJGgk8CTwJGQoZCD0JPAkADQU=
 
   - alias: Select Denon Input Chromecast
     trigger:
@@ -40,8 +40,19 @@ automation:
       - service: switch.turn_on
         data:
           entity_id: switch.listwa_salon_slot_1
-      - service: broadlink.send
+      - service: remote.send_command
+        entity_id: remote.broadlink_remote
         data:
-          host: RMMINI-d9-23-fa.lan
-          packet:
-            - "JgCIAAgbCTwJGQoZCRkKGQkZCTwJGgoYChkKOwk8ChgKGQgABaELGAo7CBsJGQkaCTwJPAoYCjsJPAo7ChkKGAo7CjsKAAWgCRkKOwoZChgJGgkZChkKOwgaCRoIGwg9CTwJGQoZCQAFoAkaCTwJGQoZCRkJPAo7ChkKOwk8CD0IGgoZCD0IPQkADQU="
+          device: broadlink
+          command: b64:JgCIAAgbCTwJGQoZCRkKGQkZCTwJGgoYChkKOwk8ChgKGQgABaELGAo7CBsJGQkaCTwJPAoYCjsJPAo7ChkKGAo7CjsKAAWgCRkKOwoZChgJGgkZChkKOwgaCRoIGwg9CTwJGQoZCQAFoAkaCTwJGQoZCRkJPAo7ChkKOwk8CD0IGgoZCD0IPQkADQU=
+      - wait_for_trigger:
+          - platform: state
+            entity_id: binary_sensor.chromecast_salon_online
+            to: "on"
+        timeout: 60
+        continue_on_timeout: true
+      - service: remote.send_command
+        entity_id: remote.broadlink_remote
+        data:
+          device: broadlink
+          command: b64:JgCIAAgbCTwJGQoZCRkKGQkZCTwJGgoYChkKOwk8ChgKGQgABaELGAo7CBsJGQkaCTwJPAoYCjsJPAo7ChkKGAo7CjsKAAWgCRkKOwoZChgJGgkZChkKOwgaCRoIGwg9CTwJGQoZCQAFoAkaCTwJGQoZCRkJPAo7ChkKOwk8CD0IGgoZCD0IPQkADQU=

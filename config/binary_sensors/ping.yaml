@@ -166,11 +166,11 @@
 #  count: 1
 #  scan_interval: 60
 #
-#- platform: ping
-#  name: chromecast_salon_online
-#  host: Chromecast-Audio-Salon.lan
-#  count: 1
-#  scan_interval: 60
+- platform: ping
+  name: chromecast_salon_online
+  host: Chromecast-Audio-Salon.lan
+  count: 1
+  scan_interval: 50
 
 #- platform: ping
 #  name: chromecast_sypialnia_online
