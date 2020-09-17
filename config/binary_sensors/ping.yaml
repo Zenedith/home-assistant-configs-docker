@@ -17,6 +17,12 @@
   scan_interval: 30
 
 - platform: ping
+  name: yi-dome-1080p_online
+  host: yi-dome-1080p.lan
+  count: 1
+  scan_interval: 30
+
+- platform: ping
   name: shelly_1_pokoj_jan_online
   host: shelly_1_pokoj_janka.lan
   count: 2
@@ -174,7 +180,7 @@
 
 #- platform: ping
 #  name: drukarka_online
-#  host: 192.168.1.123
+#  host: BRN30055C9A3593.lan
 #  count: 1
 #  scan_interval: 60
 

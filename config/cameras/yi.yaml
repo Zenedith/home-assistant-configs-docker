@@ -1,0 +1,5 @@
+- platform: ffmpeg
+  name: Yi-dome-1080p
+#  input: rtsp://yi-dome-1080p.lan:8554/unicast
+  input: rtsp://yi-dome-1080p.lan/ch0_0.h264
+  extra_arguments: '-vf scale=800:450'

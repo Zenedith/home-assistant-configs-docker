@@ -1,0 +1,53 @@
+- alias: 'dafang motion detected'
+  initial_state: 'on'
+  trigger:
+    payload: 'ON'
+    platform: mqtt
+    topic: camera/dafang/motion
+  condition:
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'off'
+  action:
+    service: notify.mypushbullet
+    data_template:
+      title: '!! Wykryto ruch - dafang. !!'
+      message: |
+        {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+        Wykryto ruch - dafang.
+
+- alias: 'yicam motion detected'
+  initial_state: 'on'
+  trigger:
+    payload: 'motion_start'
+    platform: mqtt
+    topic: yicam/motion_detection
+  condition:
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'off'
+  action:
+    service: notify.mypushbullet
+    data_template:
+      title: '!! Wykryto ruch - yicam. !!'
+      message: |
+        {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+        Wykryto ruch - yicam.
+
+- alias: 'yicam baby crying detected'
+  initial_state: 'on'
+  trigger:
+    payload: 'crying'
+    platform: mqtt
+    topic: yicam/baby_crying
+  condition:
+    - condition: state
+      entity_id: binary_sensor.home_occupied
+      state: 'off'
+  action:
+    service: notify.mypushbullet
+    data_template:
+      title: 'Wykryto placz dziecka'
+      message: |
+        {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+        Wykryto placz dziecka.

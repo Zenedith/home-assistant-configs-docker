@@ -4,7 +4,9 @@
   availability_topic: "zigbee2mqtt/0x00158d00021508b4/availability"
   payload_available: "online"
   payload_not_available: "offline"
-  value_template: "{{ value_json.linkquality }}"
+  value_template: "{{ value_json.linkquality}}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "lazienka_leak_linkquality"
@@ -13,6 +15,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "drzwi_balkonowe_linkquality"
@@ -21,6 +25,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "drzwi_wejsciowe_linkquality"
@@ -29,6 +35,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "okno_janek_linkquality"
@@ -37,6 +45,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "okno_sypialnia_linkquality"
@@ -45,6 +55,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "drzwi_lazienka_linkquality"
@@ -53,6 +65,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "drzwi_toaleta_linkquality"
@@ -61,6 +75,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "okno_kuchnia_linkquality"
@@ -69,6 +85,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "lazienka_motion_linkquality"
@@ -77,6 +95,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "sypialnia_motion_linkquality"
@@ -85,6 +105,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "janek_motion_linkquality"
@@ -93,6 +115,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "korytarz_motion_linkquality"
@@ -101,6 +125,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "korytarz_temp_linkquality"
@@ -109,6 +135,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "kuchnia_temp_linkquality"
@@ -117,6 +145,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "router_linkquality"
@@ -125,6 +155,8 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"
 
 - platform: "mqtt"
   name: "smoke_linkquality"
@@ -133,3 +165,5 @@
   payload_available: "online"
   payload_not_available: "offline"
   value_template: "{{ value_json.linkquality }}"
+  device_class: "signal_strength"
+  unit_of_measurement: "lq"

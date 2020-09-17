@@ -2,7 +2,12 @@ sequence:
   - service: switch.turn_on
     data:
       entity_id: switch.zmietek
-  - delay: 00:15:00
+  - wait_for_trigger:
+    - platform: state
+      entity_id: sensor.vacuum_battery
+      to: '90'
+    timeout: 600
+    continue_on_timeout: true
   - service: vacuum.start
     data:
       entity_id: vacuum.zmietekv2

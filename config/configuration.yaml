@@ -40,7 +40,7 @@ history: !include history.yaml
 recorder: !include recorder.yaml
 zone: !include_dir_merge_list zones
 
-camera: !include cameras/dafang.yaml
+camera: !include_dir_merge_list cameras
 timer: !include timer/timer.yaml
 group: !include_dir_named groups
 automation: !include_dir_merge_list automation
