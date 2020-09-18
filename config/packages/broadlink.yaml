@@ -45,14 +45,3 @@ automation:
         data:
           device: broadlink
           command: b64:JgCIAAgbCTwJGQoZCRkKGQkZCTwJGgoYChkKOwk8ChgKGQgABaELGAo7CBsJGQkaCTwJPAoYCjsJPAo7ChkKGAo7CjsKAAWgCRkKOwoZChgJGgkZChkKOwgaCRoIGwg9CTwJGQoZCQAFoAkaCTwJGQoZCRkJPAo7ChkKOwk8CD0IGgoZCD0IPQkADQU=
-      - wait_for_trigger:
-          - platform: state
-            entity_id: binary_sensor.chromecast_salon_online
-            to: "on"
-        timeout: 60
-        continue_on_timeout: true
-      - service: remote.send_command
-        entity_id: remote.broadlink_remote
-        data:
-          device: broadlink
-          command: b64:JgCIAAgbCTwJGQoZCRkKGQkZCTwJGgoYChkKOwk8ChgKGQgABaELGAo7CBsJGQkaCTwJPAoYCjsJPAo7ChkKGAo7CjsKAAWgCRkKOwoZChgJGgkZChkKOwgaCRoIGwg9CTwJGQoZCQAFoAkaCTwJGQoZCRkJPAo7ChkKOwk8CD0IGgoZCD0IPQkADQU=

@@ -183,7 +183,7 @@ sensor.mi_h_e72e017168dc:
   friendly_name: rtv
 sensor.mi_t_e72e017168dc:
   friendly_name: rtv
-media_player.chromecastaudio9772:
+media_player.salon:
   friendly_name: salon
 sensor.mi_m_c47c8d6a0192:
   friendly_name: moisture

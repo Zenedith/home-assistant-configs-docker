@@ -39,7 +39,7 @@
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: media_player.chromecastaudio9772
+      entity_id: media_player.salon
       to: 'playing'
   action:
     - service: input_select.select_option
@@ -51,14 +51,10 @@
   initial_state: 'on'
   trigger:
     - platform: state
-      entity_id: media_player.chromecastaudio9772
+      entity_id: media_player.salon
       to: 'off'
       for:
         seconds: 5
-  condition:
-    - condition: state
-      entity_id: media_player.sony_bravia_tv
-      state: 'on'
   action:
     - service: input_select.select_option
       data:
