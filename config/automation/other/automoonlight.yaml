@@ -2,7 +2,7 @@
   initial_state: 'on'
   trigger:
     platform: time
-    at: '20:30:00'
+    at: '20:00:00'
   condition:
     - condition: state
       entity_id: binary_sensor.home_occupied
@@ -13,27 +13,14 @@
       data_template:
         brightness: 1
 
-- alias: 'korytarz automations off'
-  initial_state: 'on'
-  trigger:
-    platform: time
-    at: '21:30:00'
-  action:
-    - service: automation.turn_off
-      data:
-        entity_id: automation.wlacz_swiatlo_w_korytarzu_gdy_ruch,automation.wlacz_swiatlo_w_pokoju_janka_gdy_ruch
-
 - alias: 'korytarz ambilight off'
   initial_state: 'on'
   trigger:
     platform: time
-    at: '07:00:00'
+    at: '08:00:00'
   action:
     - service: light.turn_off
       entity_id: light.lampa_korytarz_ambilight
-    - service: automation.turn_on
-      data:
-        entity_id: automation.wlacz_swiatlo_w_korytarzu_gdy_ruch,automation.wlacz_swiatlo_w_pokoju_janka_gdy_ruch
 
 - alias: 'Auto chillout Jas on'
   initial_state: 'on'
@@ -70,10 +57,8 @@
     - service: input_boolean.turn_off
       data:
         entity_id: input_boolean.sypialnia_chillout
-    - service: light.turn_on
-      entity_id: group.kuchnia_lampa
-      data_template:
-        brightness: 255
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.moonlight_kuchnia
 
 - alias: 'Chillout mode on'
   initial_state: 'on'

@@ -66,7 +66,7 @@
 
 - platform: ping
   name: roleta_salon_online
-  host: shellyswitch25-B94328.lan
+  host: roleta-salon.lan
   count: 2
   scan_interval: 60
 
@@ -160,12 +160,12 @@
   count: 1
   scan_interval: 60
 
-#- platform: ping
-#  name: chromecast_pokoj_janka_online
-#  host: 192.168.1.64
-#  count: 1
-#  scan_interval: 60
-#
+- platform: ping
+  name: chromecast_pokoj_janka_online
+  host: 192.168.1.206
+  count: 1
+  scan_interval: 60
+
 - platform: ping
   name: chromecast_salon_online
   host: Chromecast-Audio-Salon.lan
@@ -265,5 +265,11 @@
 - platform: ping
   name: yeelink_light_ceil_online
   host: yeelink-light-ceiling3_mibt1303.lan
+  count: 1
+  scan_interval: 60
+
+- platform: ping
+  name: macbook_home_zene_online
+  host: macbook-home-zene.lan
   count: 1
   scan_interval: 60

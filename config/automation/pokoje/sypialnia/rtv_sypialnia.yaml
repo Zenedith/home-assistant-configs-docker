@@ -1,12 +1,12 @@
 - alias: 'Listwa sypialnia off'
   initial_state: 'on'
   trigger:
-    platform: time
-    at: '01:05:00'
-  condition:
-    - condition: state
-      entity_id: binary_sensor.listwa_sypiania_used
-      state: 'off'
+    - platform: time
+      at: '01:05:00'
+    - platform: time
+      at: '02:05:00'
+    - platform: time
+      at: '03:05:00'
   action:
     - service: switch.turn_off
       data:
@@ -15,15 +15,8 @@
 - alias: 'Listwa sypialnia on'
   trigger:
     platform: time
-    at: '07:05:00'
+    at: '08:05:00'
   condition:
-    - condition: time
-      weekday:
-        - mon
-        - tue
-        - wed
-        - thu
-        - fri
     - condition: state
       entity_id: binary_sensor.home_occupied
       state: 'on'
@@ -32,7 +25,7 @@
       data:
         entity_id: switch.listwa_sypialnia_switch
 
-- alias: 'Turn off media (listwa) if switch is available'
+- alias: 'Turn off sypialnia listwa after use'
   initial_state: 'on'
   trigger:
     - platform: state

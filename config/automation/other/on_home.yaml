@@ -42,9 +42,9 @@
       state: 'on'
   action:
     - service: script.climate_turn_on
-#    - service: notify.mypushbullet
-#      data_template:
-#        title: 'Just returned home, climate on'
-#        message: |
-#          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
-#          Just returned home, climate on.
+    - service: notify.mypushbullet
+      data_template:
+        title: 'Just returned home, climate on'
+        message: |
+          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
+          Just returned home, climate on.

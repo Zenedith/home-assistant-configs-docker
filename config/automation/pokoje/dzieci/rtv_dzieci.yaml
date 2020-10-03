@@ -1,8 +1,28 @@
-- alias: 'Jan RTV off'
+- alias: 'Dzieci listwa off'
   initial_state: 'on'
   trigger:
-    platform: time
-    at: '00:05:00'
+    - platform: time
+      at: '00:05:00'
+    - platform: time
+      at: '01:05:00'
+    - platform: time
+      at: '02:05:00'
+    - platform: time
+      at: '03:05:00'
+  action:
+    - service: switch.turn_off
+      data:
+        entity_id: switch.listwa_jan_switch
+
+- alias: 'Turn off dzieci listwa after use'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id: switch.listwa_jan_switch
+      from: 'unavailable'
+      to: 'on'
+      for:
+        minutes: 15
   action:
     - service: switch.turn_off
       data:
