@@ -100,16 +100,8 @@ asuswrt:
   dnsmasq: '/var/lib/misc'
   sensors:
     - devices
-    - upload
-    - download
-    - upload_speed
-    - download_speed
+#    - upload
+#    - download
+#    - upload_speed
+#    - download_speed
 
-#device_tracker:
-#  - platform: asuswrt
-#    host: 192.168.1.1
-#    username: !secret device_tracker_asus_username
-#    password: !secret device_tracker_asus_password
-#    interval_seconds: 60
-#    new_device_defaults:
-#      track_new_devices: true

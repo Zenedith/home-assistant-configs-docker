@@ -36,9 +36,13 @@
         - media_player.sypialnia_chromecast
         - switch.listwa_sypialnia
       value_template: "{{ is_state('switch.listwa_sypialnia', 'on') }}"
-      availability_template: "{{- is_state('media_player.sypialnia_chromecast','on')
+      availability_template: "{{-
+        is_state('media_player.sypialnia_chromecast','on')
           or
-        is_state('media_player.sypialnia_chromecast','off') -}}"
+        is_state('media_player.sypialnia_chromecast','off')
+          or
+        is_state('media_player.sypialnia_chromecast','unavailable')
+        -}}"
       turn_on:
         service: switch.turn_on
         data:
@@ -61,6 +65,8 @@
           is_state('binary_sensor.sharp_online', 'off')
         and
         (
+          is_state('media_player.pokoj_janka','unavailable')
+        or
           is_state('media_player.pokoj_janka','off')
         or
           is_state('media_player.pokoj_janka','on')
