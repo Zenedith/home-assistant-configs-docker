@@ -1,0 +1,5 @@
+- platform: mqtt
+  name: "synology cpu temperature"
+  state_topic: "synology/cpu/temperature"
+  unit_of_measurement: '°C'
+  device_class: "temperature"
