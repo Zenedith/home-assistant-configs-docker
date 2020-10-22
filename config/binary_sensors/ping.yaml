@@ -172,17 +172,17 @@
   count: 1
   scan_interval: 50
 
-#- platform: ping
-#  name: chromecast_sypialnia_online
-#  host: 192.168.1.42
-#  count: 1
-#  scan_interval: 60
+- platform: ping
+  name: chromecast_sypialnia_online
+  host: 192.168.1.42
+  count: 1
+  scan_interval: 60
 
-#- platform: ping
-#  name: drukarka_online
-#  host: BRN30055C9A3593.lan
-#  count: 1
-#  scan_interval: 60
+- platform: ping
+  name: drukarka_online
+  host: BRN30055C9A3593.lan
+  count: 1
+  scan_interval: 60
 
 - platform: ping
   name: lampa_kuchnia_1_online

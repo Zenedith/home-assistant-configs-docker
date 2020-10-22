@@ -29,7 +29,7 @@
       data:
         entity_id: switch.listwa_salon_slot_3
 
-- alias: 'Sleep mode for Air purifier'
+- alias: 'Night mode for Air purifier'
   initial_state: 'on'
   trigger:
     platform: time
@@ -45,7 +45,7 @@
     - service: fan.set_speed
       data:
         entity_id: fan.purifier
-        speed: 'silent'
+        speed: 'auto'
 
 #- alias: 'Sleep mode for humidifier'
 #  initial_state: 'on'
@@ -96,14 +96,14 @@
     - service: fan.set_speed
       data:
         entity_id: fan.smartmi2
-        speed: 'high'
+        speed: 'auto'
 
 - alias: 'Power off humidifier when no water'
   initial_state: 'on'
   trigger:
     - platform: numeric_state
       entity_id: sensor.humidifier_depth
-      below: 25
+      below: 40
   condition:
     - condition: state
       entity_id: fan.smartmi2
@@ -152,7 +152,7 @@
       state: 'off'
     - condition: numeric_state
       entity_id: sensor.humidifier_depth
-      above: 10
+      above: 40
     - condition: state
       entity_id: binary_sensor.home_occupied
       state: 'on'
@@ -167,7 +167,7 @@
 #          {{now().strftime("%d.%m.%Y-%H:%M:%S")}}
 #          Humidifier on humidity < 45 %
 
-- alias: 'Purifier sleep mode when aqi below 8'
+- alias: 'Purifier auto mode when aqi below 8'
   initial_state: 'on'
   trigger:
     - platform: numeric_state
@@ -183,10 +183,11 @@
     - service: fan.turn_on
       data:
         entity_id: fan.purifier
+    - delay: 00:00:05
     - service: fan.set_speed
       data:
         entity_id: fan.purifier
-        speed: 'silent'
+        speed: 'auto'
 #    - service: notify.mypushbullet
 #      data_template:
 #        title: 'Purifier sleep mode aqi < 8'
@@ -213,6 +214,7 @@
     - service: fan.turn_on
       data:
         entity_id: fan.purifier
+    - delay: 00:00:05
     - service: fan.set_speed
       data:
         entity_id: fan.purifier
@@ -240,7 +242,7 @@
         entity_id: fan.purifier, fan.smartmi2
     - service: automation.turn_off
       data:
-        entity_id: automation.purifier_full_power_when_aqi_above_15, automation.purifier_sleep_mode_when_aqi_below_8, automation.power_off_humidifier_when_humidity_above_60, automation.power_on_humidifier_when_humidity_below_45
+        entity_id: automation.purifier_full_power_when_aqi_above_15, automation.purifier_auto_mode_when_aqi_below_8, automation.power_off_humidifier_when_humidity_above_60, automation.power_on_humidifier_when_humidity_below_45
 #    - service: notify.mypushbullet
 #      data_template:
 #        title: 'Purifier and humidifier automations off'
@@ -260,7 +262,7 @@
         entity_id: fan.purifier, fan.smartmi2
     - service: automation.turn_on
       data:
-        entity_id: automation.purifier_full_power_when_aqi_above_15, automation.purifier_sleep_mode_when_aqi_below_8, automation.power_off_humidifier_when_humidity_above_60, automation.power_on_humidifier_when_humidity_below_45
+        entity_id: automation.purifier_full_power_when_aqi_above_15, automation.purifier_auto_mode_when_aqi_below_8, automation.power_off_humidifier_when_humidity_above_60, automation.power_on_humidifier_when_humidity_below_45
 #    - service: notify.mypushbullet
 #      data_template:
 #        title: 'Purifier automations on'
