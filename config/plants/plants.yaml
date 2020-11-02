@@ -1,4 +1,4 @@
-zamioculcas_zamiifolia:
+cycas_circinalis:
   sensors:
     moisture: sensor.mi_m_c47c8d6a0192
 #    moisture: sensor.zamioculcas_zamiifolia_moisture
@@ -13,7 +13,7 @@ zamioculcas_zamiifolia:
   min_battery: 20
   min_conductivity: 350
   max_conductivity: 2000
-  min_temperature: 10
+  min_temperature: 6
   max_temperature: 32
 
 #sansevieria_trifasciata:
@@ -91,53 +91,50 @@ zamioculcas_zamiifolia:
 #  min_temperature: 7
 #  max_temperature: 35
 
-spathiphyllum:
-  sensors:
-    moisture: sensor.mi_m_c47c8d6b24c7
-#    moisture: sensor.spathiphyllum_moisture
-    battery: sensor.spathiphyllum_battery
-    temperature: sensor.mi_t_c47c8d6b24c7
-#    temperature: sensor.spathiphyllum_temperature
-    conductivity: sensor.mi_c_c47c8d6b24c7
-#    conductivity: sensor.spathiphyllum_conductivity
-    brightness: sensor.mi_l_c47c8d6b24c7
-  min_moisture: 15
-  max_moisture: 65
-  min_battery: 20
-  min_conductivity: 350
-  max_conductivity: 2000
-  min_temperature: 15
-  max_temperature: 32
+#spathiphyllum:
+#  sensors:
+#    moisture: sensor.mi_m_c47c8d6b24c7
+##    moisture: sensor.spathiphyllum_moisture
+#    battery: sensor.spathiphyllum_battery
+#    temperature: sensor.mi_t_c47c8d6b24c7
+##    temperature: sensor.spathiphyllum_temperature
+#    conductivity: sensor.mi_c_c47c8d6b24c7
+##    conductivity: sensor.spathiphyllum_conductivity
+#    brightness: sensor.mi_l_c47c8d6b24c7
+#  min_moisture: 15
+#  max_moisture: 65
+#  min_battery: 20
+#  min_conductivity: 350
+#  max_conductivity: 2000
+#  min_temperature: 15
+#  max_temperature: 32
 
-pachira:
+ficus_lyrata:
   sensors:
-    moisture: sensor.mi_m_c47c8d6b5ab1
-#    moisture: sensor.pachira_moisture
+    moisture: sensor.mi_moisture_c47c8d6b5ab1
     battery: sensor.pachira_battery
-    temperature: sensor.mi_t_cc47c8d6b5ab1
-#    temperature: sensor.pachira_temperature
-    conductivity: sensor.mi_c_cc47c8d6b5ab1
-#    conductivity: sensor.pachira_conductivity
-    brightness: sensor.mi_l_cc47c8d6b5ab1
+    temperature: sensor.mi_temperature_c47c8d6b5ab1
+    conductivity: sensor.mi_conductivity_c47c8d6b5ab1
+    brightness: sensor.mi_llluminance_c47c8d6b5ab1
   min_moisture: 15
   max_moisture: 60
   min_battery: 20
   min_conductivity: 350
   max_conductivity: 2000
-  min_temperature: 10
+  min_temperature: 12
   max_temperature: 32
 
-#yucca_elephantipes:
-#  sensors:
-#    moisture: sensor.mi_m_c47c8d6b1ab3
-#    battery: sensor.yucca_elephantipes_battery
-#    temperature: sensor.mi_t_c47c8d6b1ab3
-#    conductivity: sensor.mi_c_c47c8d6b1ab3
-#    brightness: sensor.mi_l_c47c8d6b1ab3
-#  min_moisture: 15
-#  max_moisture: 60
-#  min_battery: 20
-#  min_conductivity: 350
-#  max_conductivity: 2000
-#  min_temperature: 8
-#  max_temperature: 32
+monstera:
+  sensors:
+    moisture: sensor.mi_moisture_c47c8d6b1ab3
+    battery: sensor.monstera_battery
+    temperature: sensor.mi_temperature_c47c8d6b1ab3
+    conductivity: sensor.mi_conductivity_c47c8d6b1ab3
+    brightness: sensor.mi_llluminance_c47c8d6b1ab3
+  min_moisture: 15
+  max_moisture: 60
+  min_battery: 20
+  min_conductivity: 350
+  max_conductivity: 2000
+  min_temperature: 12
+  max_temperature: 32

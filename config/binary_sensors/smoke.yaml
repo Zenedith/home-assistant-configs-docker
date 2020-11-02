@@ -8,3 +8,13 @@
   payload_off: false
   value_template: "{{ value_json.smoke }}"
   device_class: "smoke"
+
+- platform: "mqtt"
+  name: "kuchnia_smoke_tamper"
+  state_topic: "zigbee2mqtt/0x00158d0002b0b23f"
+  availability_topic: "zigbee2mqtt/0x00158d0002b0b23f/availability"
+  payload_available: "online"
+  payload_not_available: "offline"
+  payload_on: true
+  payload_off: false
+  value_template: "{{ value_json.tamper }}"

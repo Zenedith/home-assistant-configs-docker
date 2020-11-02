@@ -16,3 +16,7 @@
       value_template: "{{ state_attr('vacuum.zmietekv2', 'battery_level') }}"
       friendly_name: 'Zmietek'
       unit_of_measurement: '%'
+    formaldehyde_sypialnia_battery:
+      value_template: "{{ state_attr('sensor.mi_formaldehyde_sypialnia_formaldehyde', 'battery_level') }}"
+      friendly_name: 'Formaldehyde sypialnia'
+      unit_of_measurement: '%'

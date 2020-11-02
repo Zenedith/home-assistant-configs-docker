@@ -69,21 +69,21 @@
   unit_of_measurement: 'µS/cm'
   device_class: temperature
 
-- platform: mqtt
-  name: "pachira moisture"
-  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/moisture"
-  device_class: "humidity"
-  unit_of_measurement: '%'
-
-- platform: mqtt
-  name: "pachira temperature"
-  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/temperature"
-  unit_of_measurement: '°C'
-  device_class: "temperature"
-
-- platform: mqtt
-  name: "pachira conductivity"
-  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/fertility"
-#  device_class: "conductivity"
-  unit_of_measurement: 'µS/cm'
-  device_class: temperature
+#- platform: mqtt
+#  name: "pachira moisture"
+#  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/moisture"
+#  device_class: "humidity"
+#  unit_of_measurement: '%'
+#
+#- platform: mqtt
+#  name: "pachira temperature"
+#  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/temperature"
+#  unit_of_measurement: '°C'
+#  device_class: "temperature"
+#
+#- platform: mqtt
+#  name: "pachira conductivity"
+#  state_topic: "home/ble2mqtt/c4:7c:8d:6b:5a:b1/fertility"
+##  device_class: "conductivity"
+#  unit_of_measurement: 'µS/cm'
+#  device_class: temperature

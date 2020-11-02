@@ -32,7 +32,7 @@
       - conditions:
         - condition: time
           after: '07:00:00'
-          before: '20:59:59'
+          before: '20:57:59'
         sequence:
           - service: light.turn_on
             data:

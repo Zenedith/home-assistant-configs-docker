@@ -18,7 +18,7 @@
       data:
         entity_id: light.swiatlo_pokoj_janka
     - delay:
-        minutes: 15
+        minutes: 3
     - service: light.turn_off
       data:
         entity_id: light.swiatlo_pokoj_janka

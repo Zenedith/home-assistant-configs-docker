@@ -209,11 +209,19 @@ sensor.mi_c_c47c8d6b24c7:
   friendly_name: cond
 sensor.mi_l_c47c8d6b24c7:
   friendly_name: lx
-sensor.mi_m_c47c8d6b1ab3:
+sensor.mi_moisture_c47c8d6b1ab3:
   friendly_name: moisture
-sensor.mi_t_c47c8d6b1ab3:
+sensor.mi_temperature_c47c8d6b1ab3:
   friendly_name: C
-sensor.mi_c_c47c8d6b1ab3:
+sensor.mi_conductivity_c47c8d6b1ab3:
   friendly_name: cond
-sensor.mi_l_c47c8d6b1ab3:
+sensor.mi_llluminance_c47c8d6b1ab3:
+  friendly_name: lx
+sensor.mi_moisture_c47c8d6b5ab1:
+  friendly_name: moisture
+sensor.mi_temperature_c47c8d6b5ab1:
+  friendly_name: C
+sensor.mi_conductivity_c47c8d6b5ab1:
+  friendly_name: cond
+sensor.mi_llluminance_c47c8d6b5ab1:
   friendly_name: lx
