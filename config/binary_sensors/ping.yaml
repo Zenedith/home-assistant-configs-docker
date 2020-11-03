@@ -273,3 +273,9 @@
   host: macbook-home-zene.lan
   count: 1
   scan_interval: 60
+
+- platform: ping
+  name: wled_d1_online
+  host: d1.lan
+  count: 1
+  scan_interval: 60
