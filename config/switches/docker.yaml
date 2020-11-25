@@ -1,90 +1,77 @@
 - platform: rest
   resource: http://127.0.0.1:8126/container/mosquitto
-  name: Mosquitto
+  name: Docker mosquitto
   body_on: '{"state": "unpause"}'
   body_off: '{"state": "pause"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://127.0.0.1:8126/container/ha-dockermon
-  name: ha-dockermon
+  name: Docker dockermon
   body_on: '{"state": "unpause"}'
   body_off: '{"state": "pause"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
-- platform: rest
-  resource: http://127.0.0.1:8126/container/nicolargo-glances
-  name: nicolargo-glances
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#- platform: rest
+#  resource: http://127.0.0.1:8126/container/nicolargo-glances
+#  name: nicolargo-glances
+#  body_on: '{"state": "unpause"}'
+#  body_off: '{"state": "pause"}'
+#  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://127.0.0.1:8126/container/nextcloud
-  name: nextcloud
+  name: Docker nextcloud
   body_on: '{"state": "unpause"}'
   body_off: '{"state": "pause"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://127.0.0.1:8126/container/zigbee2mqtt
-  name: zigbee2mqtt
+  name: Docker zigbee2mqtt
   body_on: '{"state": "unpause"}'
   body_off: '{"state": "pause"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://127.0.0.1:8126/container/mariadb
-  name: mariadb
+  name: Docker mariadb
   body_on: '{"state": "unpause"}'
   body_off: '{"state": "pause"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
 - platform: rest
   resource: http://127.0.0.1:8126/container/letsencrypt
-  name: letsencrypt
+  name: Docker letsencrypt
   body_on: '{"state": "unpause"}'
   body_off: '{"state": "pause"}'
   is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
 
-- platform: rest
-  resource: http://127.0.0.1:8126/container/homeassistant
-  name: homeassistant
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-
-- platform: rest
-  resource: http://127.0.0.1:8126/container/plex
-  name: plex
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-
-- platform: rest
-  resource: http://127.0.0.1:8126/container/sonarr
-  name: sonarr
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-
-- platform: rest
-  resource: http://127.0.0.1:8126/container/transmission
-  name: transmission
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-
-- platform: rest
-  resource: http://127.0.0.1:8126/container/vpn
-  name: vpn
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
-
-- platform: rest
-  resource: http://127.0.0.1:8126/container/youtube-dl
-  name: youtube-dl
-  body_on: '{"state": "unpause"}'
-  body_off: '{"state": "pause"}'
-  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#- platform: rest
+#  resource: http://127.0.0.1:8126/container/homeassistant
+#  name: Docker homeassistant
+#  body_on: '{"state": "unpause"}'
+#  body_off: '{"state": "pause"}'
+#  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#
+#- platform: rest
+#  resource: http://127.0.0.1:8126/container/plex
+#  name: Docker plex
+#  body_on: '{"state": "unpause"}'
+#  body_off: '{"state": "pause"}'
+#  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#
+#- platform: rest
+#  resource: http://127.0.0.1:8126/container/transmission
+#  name: Docker transmission
+#  body_on: '{"state": "unpause"}'
+#  body_off: '{"state": "pause"}'
+#  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#
+#- platform: rest
+#  resource: http://127.0.0.1:8126/container/vpn
+#  name: Docker vpn
+#  body_on: '{"state": "unpause"}'
+#  body_off: '{"state": "pause"}'
+#  is_on_template: '{{ value_json is not none and value_json.state == "running" }}'
+#

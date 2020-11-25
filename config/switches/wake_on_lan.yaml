@@ -1,3 +1,4 @@
 - platform: wake_on_lan
   name: "fujitsu"
   mac: 90:1B:0E:B8:C0:FB
+  host: fujitsu.lan

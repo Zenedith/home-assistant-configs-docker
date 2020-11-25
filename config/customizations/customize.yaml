@@ -215,6 +215,14 @@ sensor.mi_temperature_c47c8d6b1ab3:
   friendly_name: C
 sensor.mi_conductivity_c47c8d6b1ab3:
   friendly_name: cond
+sensor.ble_moisture_monstera:
+  friendly_name: moisture
+sensor.ble_temperature_monstera:
+  friendly_name: C
+sensor.ble_conductivity_monstera:
+  friendly_name: cond
+sensor.ble_illuminance_monstera:
+  friendly_name: lx
 sensor.mi_llluminance_c47c8d6b1ab3:
   friendly_name: lx
 sensor.mi_moisture_c47c8d6b5ab1:
@@ -224,4 +232,28 @@ sensor.mi_temperature_c47c8d6b5ab1:
 sensor.mi_conductivity_c47c8d6b5ab1:
   friendly_name: cond
 sensor.mi_llluminance_c47c8d6b5ab1:
+  friendly_name: lx
+sensor.ble_moisture_ficus_lyrata:
+  friendly_name: moisture
+sensor.ble_temperature_ficus_lyrata:
+  friendly_name: C
+sensor.ble_conductivity_ficus_lyrata:
+  friendly_name: cond
+sensor.ble_illuminance_ficus_lyrata:
+  friendly_name: lx
+sensor.ble_moisture_cycas_circinalis:
+  friendly_name: moisture
+sensor.ble_temperature_cycas_circinalis:
+  friendly_name: C
+sensor.ble_conductivity_cycas_circinalis:
+  friendly_name: cond
+sensor.ble_illuminance_cycas_circinalis:
+  friendly_name: lx
+sensor.ble_moisture_diffenbachia:
+  friendly_name: moisture
+sensor.ble_temperature_diffenbachia:
+  friendly_name: C
+sensor.ble_conductivity_diffenbachia:
+  friendly_name: cond
+sensor.ble_illuminance_diffenbachia:
   friendly_name: lx
