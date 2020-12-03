@@ -10,9 +10,10 @@ source.js
 /custom_components/xboxone/tokens.json
 
 /www/custom_ui/flower-card/data
-/www/custom_ui/flower-card/data
-/known_devices.yaml
+known_devices.*
 home-assistant.log
 
 ssh
 *.pyc
+image/
+.idea/
