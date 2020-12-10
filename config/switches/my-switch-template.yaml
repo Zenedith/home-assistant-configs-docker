@@ -3,10 +3,10 @@
     xbox_power_switch:
       friendly_name: Xbox power switch
       entity_id:
-        - binary_sensor.xbox_online
+        - binary_sensor.xsx_online
         - switch.listwa_salon_slot_2
       value_template: "{{ is_state('switch.listwa_salon_slot_2', 'on') }}"
-      availability_template: "{{is_state('binary_sensor.xbox_online', 'off') }}"
+      availability_template: "{{is_state('binary_sensor.xsx_online', 'off') }}"
       turn_on:
         service: switch.turn_on
         data:
