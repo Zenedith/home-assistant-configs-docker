@@ -1,4 +1,13 @@
-xiaomi_humidifier_mode:
+xiaomi_smartmi1_humidifier_mode:
+  name: Mode
+  options:
+    - auto
+    - silent
+    - medium
+    - high
+  icon: "mdi:animation-outline"
+
+xiaomi_smartmi2_humidifier_mode:
   name: Mode
   options:
     - auto

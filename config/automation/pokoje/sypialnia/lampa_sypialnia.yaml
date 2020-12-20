@@ -46,7 +46,7 @@
         speed: 'silent'
     - service: fan.set_speed
       data:
-        entity_id: fan.smartmi2
+        entity_id: fan.smartmi1
         speed: 'silent'
 
 - alias: 'Korki mode on'

@@ -1,0 +1,25 @@
+- platform: template
+  sensors:
+    smartmi1_humidifier_mode:
+      value_template: "{{ states.fan.smartmi1.attributes.mode }}"
+      friendly_name: "Mode"
+      icon_template: mdi:fan
+    smartmi1_humidifier_motor_speed:
+      value_template: "{{ states.fan.smartmi1.attributes.motor_speed }}"
+      friendly_name: "Motor speed"
+      icon_template: mdi:fan
+    smartmi1_humidifier_temperature:
+      value_template: "{{ states.fan.smartmi1.attributes.temperature }}"
+      friendly_name: "smartmi1"
+      unit_of_measurement: "°C"
+    smartmi1_humidifier_humidity:
+      value_template: "{{ states.fan.smartmi1.attributes.humidity }}"
+      friendly_name: "smartmi1"
+      unit_of_measurement: "%"
+    smartmi1_humidifier_depth:
+      value_template: "{{ (states.fan.smartmi1.attributes.depth / 1.2) | int}}"
+      friendly_name: "Depth"
+      unit_of_measurement: "%"
+    smartmi1_humidifier_target_humidity:
+      value_template: "{{ states.fan.smartmi1.attributes.target_humidity }}"
+      friendly_name: "Target humidity"

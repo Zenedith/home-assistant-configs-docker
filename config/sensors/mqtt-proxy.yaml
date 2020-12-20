@@ -1,4 +1,9 @@
 - platform: mqtt
+  name: "smartmi2 water level"
+  state_topic: "zigbee2mqtt/smartmi2/water_level"
+  unit_of_measurement: '%'
+
+- platform: mqtt
   name: "jan temp temperature"
   state_topic: "blemqtt/a4c138a37035"
   unit_of_measurement: '°C'

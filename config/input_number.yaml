@@ -13,7 +13,15 @@ xiaomi_airpurifier_favorite_level:
   step: 1
   icon: "mdi:weather-windy"
 
-xiaomi_humidifier_target_humidity_level:
+xiaomi_smartmi1_humidifier_target_humidity_level:
+  name: "Target humidity level"
+  initial: 60
+  min: 40
+  max: 70
+  step: 1
+  icon: "mdi:weather-windy"
+
+xiaomi_smartmi2_humidifier_target_humidity_level:
   name: "Target humidity level"
   initial: 60
   min: 40

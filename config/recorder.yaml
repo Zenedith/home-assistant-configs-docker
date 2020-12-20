@@ -39,7 +39,7 @@ exclude:
     - sensor.lazienka_leak_battery
     - sensor.custom_component_tracker
     - sensor.custom_python_script_tracker
-    - sensor.humidifier_motor_speed
+    - sensor.smartmi1_humidifier_motor_speed
     - sensor.motor_speed
     - sensor.purifier_filter_type
     - sensor.purifier_filter_life_remaining

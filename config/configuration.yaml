@@ -82,7 +82,12 @@ fan:
     token: !secret purifier
 
   - platform: xiaomi_miio
-    host: smartmi.lan
+    host: smartmi1.lan
+    name: smartmi1
+    token: !secret smartmi1
+
+  - platform: xiaomi_miio
+    host: smartmi2.lan
     name: smartmi2
     token: !secret smartmi2
 

@@ -95,8 +95,14 @@
   scan_interval: 60
 
 - platform: ping
-  name: smartmi2_online
+  name: smartmi1_online
   host: smartmi.lan
+  count: 1
+  scan_interval: 60
+
+- platform: ping
+  name: smartmi2_online
+  host: smartm2.lan
   count: 1
   scan_interval: 60
 
